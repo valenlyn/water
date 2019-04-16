@@ -1,5 +1,5 @@
 var React = require("react");
-// var Layout = require('../layout/layout.jsx');
+var Layout = require('../layout/layout.jsx');
 
 class SignUp extends React.Component {
   render() {
@@ -9,13 +9,7 @@ class SignUp extends React.Component {
 
 
     return (
-      <html>
-        <head>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-            <link rel="stylesheet" href="/style.css"/>
-
-        </head>
-        <body>
+      <Layout>
             <div class="row d-flex m-5 justify-content-center">
                 <div class="col-3">
                     <form method="POST" action="/signup">
@@ -30,8 +24,7 @@ class SignUp extends React.Component {
                     </form>
                 </div>
             </div>
-        </body>
-      </html>
+        </Layout>
     );
   }
 }

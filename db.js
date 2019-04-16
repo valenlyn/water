@@ -62,8 +62,8 @@ pool.on('error', function (err) {
 
 const ownersFunction = require('./models/owners');
 const owners = ownersFunction(pool);
-
-
+const plantsFunction = require('./models/plants');
+const plants =  plantsFunction(pool);
 
 
 /*
@@ -94,6 +94,7 @@ module.exports = {
 
 
   owners: owners,
+  plants: plants,
 
 
 };

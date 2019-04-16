@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS plants (
 	nickname TEXT,
 	frequency INTEGER,
 	img TEXT,
-	next_water_date TIMESTAMPTZ,
+	next_water_date DATE,
 	watered BOOLEAN,
 	created_at TIMESTAMPTZ DEFAULT now(),
 	owner_id INTEGER

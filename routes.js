@@ -23,8 +23,8 @@ module.exports = (app, allModels) => {
 
     app.post('/signup', main.signUpRequest);
 
-    // app.get('/login', main.logInRequest);
-    // app.post('/login', main)
+    app.get('/login', main.logIn);
+    app.post('/', main.authenticate);
 
 
 };

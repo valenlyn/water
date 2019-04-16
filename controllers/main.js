@@ -10,13 +10,29 @@ module.exports = (db) => {
    */
 
     let index = (request, response) => {
-        response.render('main/main');
+
+        if (!request.cookies.loggedin) {
+            response.render('main/main');
+        } else {
+
+            const data = "hi";
+
+            let getWaterPlantsToday = (result) => {
+                console.log(result);
+                // response.send(result);
+                response.render('main/water', {plants: result});
+            }
+
+            db.plants.waterPlantsToday(data, getWaterPlantsToday);
+
+        }
+
     };
 
     let signUpRequest = (request, response) => {
 
         const data = {
-            name: request.body.name,
+            username: request.body.username,
             password: sha256(request.body.password + SALT),
         }
 
@@ -33,44 +49,50 @@ module.exports = (db) => {
 
     };
 
-    let loginRequest = (request, response) => {
+    let logIn = (request, response) => {
 
-            response.render('main/login');
+        response.render('main/login');
 
     };
 
+    let authenticate = (request, response) => {
 
-    // let loggedIn = (request, response) => {
+        const data = {
+            username: request.body.username,
+            password: sha256(request.body.password + SALT)
+        }
 
-    //     const data = {
-    //         name: request.body.name,
-    //         password: sha256(request.body.password + SALT)
-    //     }
+        console.log(data);
 
-    //     console.log(data);
+        const doneWithQuery = (result) => {
+            console.log(result);
+            console.log(request.body);
+            if (result === "Password is wrong") {
 
-    //     const doneWithQuery = (result) => {
-    //         console.log(result);
+                response.render('main/login', {message: result, username: request.body.username});
+                // response.send(result);
 
-    //         if (result === "Password is wrong") {
-    //             response.send("Password is wrong");
-    //         } else if (result === "Username not found") {
-    //             response.send("Username not found");
-    //         } else {
+            } else if (result === "Username not found") {
 
-    //             let secretCookie = sha256(SALT + data.name);
-    //             response.cookie('loggedin', secretCookie);
-    //             console.log(result);
-    //             response.render('main/user', {user: result.user, tweeds: result.tweeds});
-    //             // response.send("worrrksss");
-    //         }
-    //     }
+                response.render('main/login', {message: result});
+                // response.send(result);
 
-    //     db.login.login(data, doneWithQuery);
+            } else if (result === "Password is correct") {
 
-    // };
+                let secretCookie = sha256(SALT + data.username);
+                response.cookie('loggedin', secretCookie);
+                console.log(result);
 
+                response.render('main/water');
 
+            } else {
+                response.send("Server error");
+            }
+        }
+
+        db.owners.authenticate(data, doneWithQuery);
+
+    };
 
 
   /**
@@ -81,7 +103,8 @@ module.exports = (db) => {
   return {
     index,
     signUpRequest,
-    loginRequest
+    logIn,
+    authenticate,
 
   };
 
