@@ -1,0 +1,14 @@
+.wrap {
+	margin: 200px;
+	/*background-color: pink;*/
+}
+
+.form-container {
+	width: 20%;
+	margin: 10px auto;
+/*	background-color: green;*/
+}
+
+.login {
+	padding-left: 10px;
+}
