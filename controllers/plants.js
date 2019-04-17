@@ -15,6 +15,8 @@ module.exports = (db) => {
             response.render('main/main');
         } else {
 
+            let id = request.cookies.loggedin.split('V')[0];
+            console.log("this is the idddddddd ehhehehehehhehe" + id);
             response.render('main/newplant');
 
         }

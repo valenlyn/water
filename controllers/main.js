@@ -79,7 +79,9 @@ module.exports = (db) => {
 
             } else {
 
-                let secretCookie = sha256(SALT + data.username);
+                console.log("this is the user id "+ result.user.id);
+
+                let secretCookie = result.user.id + "V" + sha256(SALT + data.username);
                 response.cookie('loggedin', secretCookie);
 
 
