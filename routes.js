@@ -15,6 +15,7 @@ module.exports = (app, allModels) => {
   // require the controller
 
     const main = require('./controllers/main')(allModels);
+    const plants = require('./controllers/plants')(allModels);
 
 
     app.get('/', main.index);
@@ -25,6 +26,8 @@ module.exports = (app, allModels) => {
 
     app.get('/login', main.logIn);
     app.post('/', main.authenticate);
+
+    app.get('/new', plants.addPlant);
 
 
 };

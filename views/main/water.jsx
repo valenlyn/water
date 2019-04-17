@@ -8,10 +8,19 @@ class Water extends React.Component {
     let month = new Date().toLocaleDateString("en-GB", options);
     let today = new Date().getDate() +" "+ month +" "+ new Date().getFullYear();
 
+
     // Render plants
-    let plants = this.props.plants.map(plant => {
+    let plants;
+
+    if (!this.props.plants) {
+        plants = "No plants require watering today!"
+    } else {
+         plants = this.props.plants.map(plant => {
         return <p>{plant.name} {plant.nickname}</p>
     })
+    }
+
+
 
     return (
         <Layout>

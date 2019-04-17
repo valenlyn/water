@@ -12,9 +12,10 @@ CREATE TABLE IF NOT EXISTS plants (
 	frequency INTEGER,
 	img TEXT,
 	next_water_date DATE,
-	watered BOOLEAN,
+	watered BOOLEAN DEFAULT false,
 	created_at TIMESTAMPTZ DEFAULT now(),
-	owner_id INTEGER
+	owner_id INTEGER,
+	alive BOOLEAN DEFAULT true
 );
 
 CREATE TABLE IF NOT EXISTS plants_owners (
