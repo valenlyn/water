@@ -8,7 +8,7 @@ class Water extends React.Component {
     // Get date
     const options = {month: 'long'};
     let month = new Date().toLocaleDateString("en-GB", options);
-    let today = new Date().getDate() +" "+ month +" "+ new Date().getFullYear();
+    let today = new Date().getDate() +" "+ month;
 
     console.log(this.props.plants);
 
@@ -29,7 +29,7 @@ class Water extends React.Component {
     return (
         <Layout>
 
-                <p>{today} </p>
+                <p class="date">{today} </p>
 
                 <div class="row d-flex">
                     {plants}

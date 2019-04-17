@@ -15,7 +15,11 @@ module.exports = (db) => {
             response.render('main/main');
         } else {
 
-            const data = "hi";
+            let owner_id = request.cookies.loggedin.split('V')[0];
+
+            let data = {
+                owner_id: owner_id,
+            }
 
             let getWaterPlantsToday = (result) => {
                 console.log(result);

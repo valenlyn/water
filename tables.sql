@@ -24,10 +24,10 @@ CREATE TABLE IF NOT EXISTS plants_owners (
 	owner_id INTEGER
 );
 
-
 CREATE TABLE IF NOT EXISTS watered (
 	id SERIAL PRIMARY KEY,
 	plant_id INTEGER,
-	watered_on TIMESTAMPTZ,
-	watered_by INTEGER
-)
+	watered_on DATE DEFAULT now(),
+	watered_by INTEGER,
+	created_at TIMESTAMPTZ DEFAULT now()
+);

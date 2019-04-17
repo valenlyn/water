@@ -42,3 +42,15 @@ a:hover {
 .wrapper {
 	position: relative;
 }
+
+.date {
+	font-family: 'Noto Serif SC', serif;
+	text-align: center;
+	font-size: 50px;
+}
+
+.water {
+	position: absolute;
+	bottom: 50%;
+	right: 50%;
+}

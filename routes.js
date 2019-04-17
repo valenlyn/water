@@ -29,5 +29,7 @@ module.exports = (app, allModels) => {
     app.get('/new', plants.addPlant);
     app.post('/new', plants.receiveAddPlantRequest);
 
+    app.post('/watered/:id', plants.water);
+
 
 };

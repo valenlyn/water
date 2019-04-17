@@ -31,8 +31,6 @@ module.exports = (db) => {
 
         } else {
 
-            console.log("nicknammemmemememe " +request.body.nickname);
-
             let id = request.cookies.loggedin.split('V')[0];
 
             let data = {
@@ -51,11 +49,35 @@ module.exports = (db) => {
             db.plants.addPlant(data, doneWithQuery);
 
         }
-
-
-
     }
 
+    let water = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            let owner_id = request.cookies.loggedin.split('V')[0];
+            let plant_id = request.params.id;
+
+            let data = {
+                owner_id: owner_id,
+                plant_id: plant_id
+            }
+
+            const doneWithQuery = (result) => {
+                console.log(result);
+                response.render('main/newplant');
+            }
+
+            db.plants.wateredPlant(data, doneWithQuery);
+
+            response.send("thx for watering ur plant");
+
+        }
+    }
 
   /**
    * ===========================================
@@ -64,7 +86,8 @@ module.exports = (db) => {
    */
   return {
     addPlant,
-    receiveAddPlantRequest
+    receiveAddPlantRequest,
+    water
   };
 
 }
