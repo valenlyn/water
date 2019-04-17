@@ -46,20 +46,22 @@ module.exports = (dbPoolInstance) => {
                 if (queryResult.rows[0].password === data.password) {
                     console.log("Password is correct");
 
-                    // let id = parseInt(queryResult.rows[0].id);
-                    // let queryTwo = `SELECT * FROM tweeds WHERE user_id=${id} ORDER BY id desc`
+                    let id = parseInt(queryResult.rows[0].id);
+                    let queryTwo = `SELECT * FROM plants WHERE owner_id=${id} ORDER BY next_water_date ASC`
 
-                    // dbPoolInstance.query(queryTwo, (error, queryResultTwo) => {
+                    dbPoolInstance.query(queryTwo, (error, queryResultTwo) => {
 
-                    //     if (error) {
-                    //         callback(error, null);
-                    //     } else {
-                    //         callback({user: queryResult.rows, tweeds: queryResultTwo.rows});
-                    //         console.log(queryResultTwo.rows);
-                    //     }
-                    // })
+                        if (error) {
+                            callback(error, null);
+                        } else {
+                            callback({user: queryResult.rows[0], plants: queryResultTwo.rows});
+                            // console.log(queryResultTwo.rows);
+                            // console.log("this is the user's iddddddd "+id);
+                        }
+                    })
 
-                    callback("Password is correct");
+                    // console.log(queryResult.rows)
+                    // callback(queryResult.rows[0]);
 
                 } else {
 

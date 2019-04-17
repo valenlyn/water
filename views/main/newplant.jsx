@@ -20,16 +20,6 @@ class New extends React.Component {
                         <input type="text" name="nickname" class="form-control" id="exampleFormControlTextarea1" placeholder="Spike Jonze"/>
                     </div>
 
-
-
-                        <label for="exampleFormControlInput1">Plant image</label>
-                        <div class="input-group mb-3">
-                          <div class="custom-file">
-                            <input type="file" name="img" class="custom-file-input" id="inputGroupFile02"/>
-                            <label class="custom-file-label" for="inputGroupFile02">Choose file...</label>
-                          </div>
-                        </div>
-
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Select the date you want to water your plant next</label>
                             <div class='input-group date' id='datetimepicker3'>

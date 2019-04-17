@@ -77,16 +77,14 @@ module.exports = (db) => {
                 response.render('main/login', {message: result});
                 // response.send(result);
 
-            } else if (result === "Password is correct") {
+            } else {
 
                 let secretCookie = sha256(SALT + data.username);
                 response.cookie('loggedin', secretCookie);
-                console.log(result);
 
-                response.render('main/water');
 
-            } else {
-                response.send("Server error");
+                response.render('main/water', {user: result.user, plants: result.plants});
+
             }
         }
 
