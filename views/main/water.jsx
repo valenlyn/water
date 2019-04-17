@@ -15,8 +15,12 @@ class Water extends React.Component {
 
     return (
         <Layout>
-            <p>{today} plants that need watering</p>
-            {plants}
+
+                <p>{today} </p>
+                <p>plants that need watering</p>
+                {plants}
+                <a href="/new"><button class="plus">+</button></a>
+
         </Layout>
     );
   }
