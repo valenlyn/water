@@ -26,11 +26,37 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+    let addPlant = (data, callback) => {
+
+        // let date = new Date().toISOString().split('T')[0];
+        // console.log(request.body);
+
+        console.log(data);
+
+        let query = `INSERT INTO plants (name, nickname, next_water_date, frequency, owner_id) VALUES ('${data.name}', '${data.nickname}', '${data.next_water_date}', ${data.frequency}, ${data.owner_id}) RETURNING *`;
+
+        dbPoolInstance.query(query, (error, queryResult) => {
+
+            if (error) {
+
+                callback(error, null);
+
+            } else {
+
+                callback(queryResult.rows);
+                console.log(queryResult.rows)
+
+            }
+        });
+    }
+
+
 
 
   return {
 
-    waterPlantsToday
+    waterPlantsToday,
+    addPlant
 
   };
 };

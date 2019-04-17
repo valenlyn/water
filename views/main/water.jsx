@@ -1,5 +1,6 @@
 var React = require("react");
 var Layout = require('../layout/layout.jsx');
+var Cards = require('../main/cards.jsx');
 
 class Water extends React.Component {
   render() {
@@ -19,7 +20,9 @@ class Water extends React.Component {
         plants = "No plants require watering today!"
     } else {
         plants = this.props.plants.map(plant => {
-        return <p>{plant.name} {plant.nickname}</p>
+            let plantLink = `/plants/${plant.id}`
+
+        return <Cards name={plant.nickname} nickname={plant.name} id={plant.id}/>
     })
     }
 
@@ -28,8 +31,13 @@ class Water extends React.Component {
 
                 <p>{today} </p>
 
-                {plants}
-                <a href="/new"><button class="plus">+</button></a>
+                <div class="row d-flex">
+                    {plants}
+                </div>
+
+                <div class="wrapper">
+                    <a href="/new"><button class="plus">+</button></a>
+                </div>
 
         </Layout>
     );

@@ -17,7 +17,6 @@ module.exports = (app, allModels) => {
     const main = require('./controllers/main')(allModels);
     const plants = require('./controllers/plants')(allModels);
 
-
     app.get('/', main.index);
     // if logged in, show watering page
     // if not logged in, show sign up + login page
@@ -28,6 +27,7 @@ module.exports = (app, allModels) => {
     app.post('/', main.authenticate);
 
     app.get('/new', plants.addPlant);
+    app.post('/new', plants.receiveAddPlantRequest);
 
 
 };

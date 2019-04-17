@@ -79,13 +79,13 @@ module.exports = (db) => {
 
             } else {
 
-                console.log("this is the user id "+ result.user.id);
+                // console.log("this is the user id "+ result.user.id);
 
                 let secretCookie = result.user.id + "V" + sha256(SALT + data.username);
                 response.cookie('loggedin', secretCookie);
 
 
-                response.render('main/water', {user: result.user, plants: result.plants});
+                response.render('main/water', {plants: result.plants});
 
             }
         }

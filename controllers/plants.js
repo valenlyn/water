@@ -16,12 +16,45 @@ module.exports = (db) => {
         } else {
 
             let id = request.cookies.loggedin.split('V')[0];
-            console.log("this is the idddddddd ehhehehehehhehe" + id);
+
             response.render('main/newplant');
 
         }
 
     };
+
+    let receiveAddPlantRequest = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            console.log("nicknammemmemememe " +request.body.nickname);
+
+            let id = request.cookies.loggedin.split('V')[0];
+
+            let data = {
+                name: request.body.name,
+                nickname: request.body.nickname,
+                next_water_date: request.body.next_water_date,
+                frequency: request.body.frequency,
+                owner_id: id
+            };
+
+            const doneWithQuery = (result) => {
+                console.log(result);
+                response.render('main/newplant');
+            }
+
+            db.plants.addPlant(data, doneWithQuery);
+
+        }
+
+
+
+    }
 
 
   /**
@@ -31,7 +64,7 @@ module.exports = (db) => {
    */
   return {
     addPlant,
-
+    receiveAddPlantRequest
   };
 
 }

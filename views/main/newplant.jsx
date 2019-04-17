@@ -34,6 +34,7 @@ class New extends React.Component {
                         </div>
 
                         <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        <button type="submit" formaction="/haha" class="btn btn-primary mb-2 ml-2">Submit and add another</button>
                     </form>
                         </div>
 
