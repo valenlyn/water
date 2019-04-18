@@ -27,6 +27,14 @@ class New extends React.Component {
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Choose how you'd like to be reminded to water this plant</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="reminder_type">
+                                <option value="email">Email</option>
+                                <option value="cal">Calendar event</option>
+                                <option>None</option>
+                            </select>
+                          </div>
 
                         <div class="form-group">
                             <label for="exampleFormControlInput1">How often does your plant require watering? (In days)</label>

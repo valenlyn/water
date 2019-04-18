@@ -33,7 +33,7 @@ module.exports = (dbPoolInstance) => {
 
         console.log(data);
 
-        let query = `INSERT INTO plants (name, nickname, next_water_date, frequency, owner_id) VALUES ('${data.name}', '${data.nickname}', '${data.next_water_date}', ${data.frequency}, ${data.owner_id}) RETURNING *`;
+        let query = `INSERT INTO plants (name, nickname, next_water_date, frequency, owner_id, reminder_type) VALUES ('${data.name}', '${data.nickname}', '${data.next_water_date}', ${data.frequency}, ${data.owner_id}, '${data.reminder_type}') RETURNING *`;
 
         dbPoolInstance.query(query, (error, queryResult) => {
 
@@ -42,6 +42,22 @@ module.exports = (dbPoolInstance) => {
                 callback(error, null);
 
             } else {
+
+                var Airtable = require('airtable');
+                var base = new Airtable({apiKey: 'keyS3h9yowOlUCiPJ'}).base('appWHPu9AQrISrHiq');
+
+                let date = queryResult.rows[0].next_water_date.toISOString().split('T')[0];
+
+                base('Table 1').create({
+                  "plant_id": parseInt(data.plant_id),
+                  "name": `${queryResult.rows[0].nickname}`,
+                  "email": "valenlynchua@gmail.com",
+                  "date": `${date}`,
+                  "reminder_type": queryResult.rows[0].reminder_type
+                }, function(err, record) {
+                    if (err) { console.error(err); return; }
+                    console.log(record.getId());
+                });
 
                 callback(queryResult.rows);
                 console.log(queryResult.rows)
@@ -54,8 +70,6 @@ module.exports = (dbPoolInstance) => {
     let wateredPlant = (data, callback) => {
 
         let query = `UPDATE plants SET watered=true WHERE id=${data.plant_id} RETURNING frequency, nickname`;
-
-        // and update date
 
         dbPoolInstance.query(query, (error, queryResult) => {
 

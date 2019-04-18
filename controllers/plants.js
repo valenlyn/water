@@ -38,7 +38,8 @@ module.exports = (db) => {
                 nickname: request.body.nickname,
                 next_water_date: request.body.next_water_date,
                 frequency: request.body.frequency,
-                owner_id: id
+                owner_id: id,
+                reminder_type: request.body.reminder_type
             };
 
             const doneWithQuery = (result) => {

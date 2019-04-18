@@ -22,9 +22,11 @@ module.exports = (db) => {
             }
 
             let getWaterPlantsToday = (result) => {
+
                 console.log(result);
-                // response.send(result);
+
                 response.render('main/water', {plants: result});
+
             }
 
             db.plants.waterPlantsToday(data, getWaterPlantsToday);
