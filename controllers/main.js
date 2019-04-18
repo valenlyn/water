@@ -36,7 +36,8 @@ module.exports = (db) => {
     let signUpRequest = (request, response) => {
 
         const data = {
-            username: request.body.username,
+            email: request.body.email,
+            name: request.body.name,
             password: sha256(request.body.password + SALT),
         }
 
@@ -44,9 +45,7 @@ module.exports = (db) => {
 
         const doneWithQuery = (data) => {
             console.log(data);
-
-            let respond = '<a href="/login">Log in</a>';
-            response.send(respond);
+            response.redirect('/login');
         }
 
       db.owners.signUp(data, doneWithQuery);
@@ -62,7 +61,7 @@ module.exports = (db) => {
     let authenticate = (request, response) => {
 
         const data = {
-            username: request.body.username,
+            email: request.body.email,
             password: sha256(request.body.password + SALT)
         }
 
@@ -73,10 +72,10 @@ module.exports = (db) => {
             console.log(request.body);
             if (result === "Password is wrong") {
 
-                response.render('main/login', {message: result, username: request.body.username});
+                response.render('main/login', {message: result, email: request.body.email});
                 // response.send(result);
 
-            } else if (result === "Username not found") {
+            } else if (result === "Email not found") {
 
                 response.render('main/login', {message: result});
                 // response.send(result);

@@ -9,7 +9,7 @@ module.exports = (dbPoolInstance) => {
 
     let signUp = (data, callback) => {
 
-        let query = `INSERT INTO owners (username, password) VALUES ('${data.username}', '${data.password}')`;
+        let query = `INSERT INTO owners (email, name, password) VALUES ('${data.email}', '${data.name}', '${data.password}')`;
 
         dbPoolInstance.query(query, (error, queryResult) => {
           if( error ){
@@ -29,12 +29,11 @@ module.exports = (dbPoolInstance) => {
 
     let authenticate = (data, callback) => {
 
-        let query = `SELECT * FROM owners WHERE username='${data.username}'`;
+        let query = `SELECT * FROM owners WHERE email='${data.email}'`;
 
         dbPoolInstance.query(query, (error, queryResult) => {
           if( error ){
 
-            // invoke callback function with results after query has executed
             callback(error, null);
 
           }else{
@@ -72,8 +71,8 @@ module.exports = (dbPoolInstance) => {
 
             } else {
 
-                console.log("Username not found");
-                callback("Username not found");
+                console.log("Email not found");
+                callback("Email not found");
 
             }
           }

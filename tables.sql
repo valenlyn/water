@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS owners (
 	id SERIAL PRIMARY KEY,
-	username TEXT,
+	email TEXT,
+	name TEXT,
 	password TEXT,
 	created_at TIMESTAMPTZ DEFAULT now()
 );
@@ -15,6 +16,7 @@ CREATE TABLE IF NOT EXISTS plants (
 	watered BOOLEAN DEFAULT false,
 	created_at TIMESTAMPTZ DEFAULT now(),
 	owner_id INTEGER,
+	reminder_type TEXT,
 	alive BOOLEAN DEFAULT true
 );
 

@@ -43,7 +43,7 @@ module.exports = (db) => {
 
             const doneWithQuery = (result) => {
                 console.log(result);
-                response.render('main/newplant');
+                response.redirect('/');
             }
 
             db.plants.addPlant(data, doneWithQuery);
@@ -74,7 +74,7 @@ module.exports = (db) => {
 
             db.plants.wateredPlant(data, doneWithQuery);
 
-            response.send("thx for watering ur plant");
+            response.redirect('/');
 
         }
     }

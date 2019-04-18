@@ -5,6 +5,9 @@ var Cards = require('../main/cards.jsx');
 class Water extends React.Component {
   render() {
 
+    //set message to render here
+
+    console.log(this.props);
     // Get date
     const options = {month: 'long'};
     let month = new Date().toLocaleDateString("en-GB", options);
@@ -29,15 +32,17 @@ class Water extends React.Component {
     return (
         <Layout>
 
-                <p class="date">{today} </p>
+            <p class="date">{today} </p>
 
+            <div class="card-wrapper">
                 <div class="row d-flex">
                     {plants}
                 </div>
+            </div>
 
-                <div class="wrapper">
-                    <a href="/new"><button class="plus">+</button></a>
-                </div>
+            <div class="wrapper">
+                <a href="/new"><button class="plus">+</button></a>
+            </div>
 
         </Layout>
     );

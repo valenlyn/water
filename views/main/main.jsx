@@ -13,12 +13,19 @@ class SignUp extends React.Component {
             <div class="row d-flex m-5 justify-content-center">
                 <div class="col-3">
                     <form method="POST" action="/signup">
+
                         <div class="form-group">
-                            <input type="text" name="username" class="form-control" id="exampleInputPassword1" placeholder="Username"/>
+                            <input type="text" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email"/>
                         </div>
+
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name"/>
+                        </div>
+
                         <div class="form-group">
                             <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Sign up</button>
                         <span class="login">or <a href="/login">Log in</a></span>
                     </form>

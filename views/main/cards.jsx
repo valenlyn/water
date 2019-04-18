@@ -8,11 +8,11 @@ class Cards extends React.Component {
     let formAction = `/watered/${this.props.id}`;
 
     return (
-        <div class="col-12-xs col-lg-3 mt-2 mb-2">
-            <div class="card h-100">
+        <div class="col-s-2 col-md-6 col-lg-3 mt-2 mb-2">
+            <div class="card h-100 m-2">
 
                 <form method="POST">
-                    <button type="submit" formaction={formAction} class="btn btn-primary mb-2 ml-2 water">💧</button>
+                    <button type="submit" formaction={formAction} class="btn-lg btn-primary mb-1 ml-1 water">💧</button>
                 </form>
 
 

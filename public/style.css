@@ -54,3 +54,11 @@ a:hover {
 	bottom: 50%;
 	right: 50%;
 }
+
+.card-wrapper {
+	margin: 20px 70px;
+}
+
+/*@media only screen and (max-width: 900px) {
+
+}*/
