@@ -9,7 +9,7 @@ module.exports = (dbPoolInstance) => {
 
         let date = new Date().toISOString().split('T')[0];
 
-        let query = `SELECT * FROM plants INNER JOIN owners ON (plants.owner_id=owners.id) WHERE (alive=true AND watered=false AND next_water_date <='${date}' AND owner_id=${data.owner_id})`;
+        let query = `SELECT * FROM plants WHERE (alive=true AND watered=false AND next_water_date <='${date}' AND owner_id=${data.owner_id})`;
 
 
         dbPoolInstance.query(query, (error, queryResult) => {
@@ -21,14 +21,13 @@ module.exports = (dbPoolInstance) => {
             } else {
 
                 callback(queryResult.rows);
-                console.log(queryResult.rows)
+                // console.log(queryResult.rows)
 
             }
         });
     }
 
     let addPlant = (data, callback) => {
-
 
         // Query to insert new plant into DB, returns newly added row
         let query = `INSERT INTO plants (name, nickname, next_water_date, frequency, owner_id, reminder_type) VALUES ('${data.name}', '${data.nickname}', '${data.next_water_date}', ${data.frequency}, ${data.owner_id}, '${data.reminder_type}') RETURNING *`;
@@ -101,6 +100,8 @@ module.exports = (dbPoolInstance) => {
                         callback(error, null);
 
                     } else {
+
+                        console.log("Managed to update " +data.plant_id+ "!!!!!!!!!!!!!!!!!");
 
                         let queryAddWateredRow = `INSERT INTO watered (plant_id, watered_by) VALUES (${data.plant_id}, ${data.owner_id})`
 

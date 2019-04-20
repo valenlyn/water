@@ -102,12 +102,10 @@ module.exports = (db) => {
 
             const doneWithQuery = (result) => {
                 console.log(result);
-                response.render('main/newplant');
+                response.redirect('/');
             }
 
             db.plants.wateredPlant(data, doneWithQuery);
-
-            response.redirect('/');
 
         }
     }

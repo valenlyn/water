@@ -11,7 +11,7 @@ class Water extends React.Component {
     // Get date
     const options = {month: 'long'};
     let month = new Date().toLocaleDateString("en-GB", options);
-    let today = new Date().getDate() +" "+ month;
+    let today = new Date().getDate() + " "+ month;
 
     console.log(this.props.plants);
 
