@@ -23,8 +23,6 @@ module.exports = (db) => {
 
             let getWaterPlantsToday = (result) => {
 
-                console.log(result);
-
                 response.render('main/water', {plants: result});
 
             }

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "airtable": "^0.5.10",
+    "bootstrap": "^4.3.1",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "express-react-views": "^0.11.0",
@@ -20,6 +21,7 @@
     "method-override": "^3.0.0",
     "pg": "^7.9.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-notifications-component": "^1.1.1"
   }
 }

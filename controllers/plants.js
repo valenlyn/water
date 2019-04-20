@@ -42,12 +42,10 @@ module.exports = (db) => {
                 reminder_type: request.body.reminder_type
             };
 
-            //date here is right
-            console.log("THIS IS THE DATE THAT I AM TAKING FROM REQUEST.BODY AND SENDING TO THE MODEL:  "+ request.body.next_water_date);
-
             const doneWithQuery = (result) => {
-                console.log(result);
+
                 response.redirect('/');
+
             }
 
             db.plants.addPlant(data, doneWithQuery);

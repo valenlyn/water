@@ -1,6 +1,8 @@
 var React = require("react");
 var Layout = require('../layout/layout.jsx');
 var Cards = require('../main/cards.jsx');
+var Notification = require('../main/notification.jsx');
+
 
 class Water extends React.Component {
   render() {
@@ -20,7 +22,7 @@ class Water extends React.Component {
     let plants;
 
     if (this.props.plants == "") {
-        plants = "No plants require watering today!"
+        plants = "All your plants are hydrated :-)"
     } else {
         plants = this.props.plants.map(plant => {
             let plantLink = `/plants/${plant.id}`
@@ -29,8 +31,20 @@ class Water extends React.Component {
     })
     }
 
+    let message;
+
+    // If plant was just watered, plant's details go in here:
+    if (this.props.message == "success") {
+        message = <Notification name={this.props.plants[0].nickname} next_water_date="2019-04-22"/>
+    } else {
+        message = <Notification name={this.props.plants[0].nickname} next_water_date="2019-04-22"/>
+    }
+
+
     return (
         <Layout>
+
+            {message}
 
             <p class="date">{today} </p>
 
@@ -43,6 +57,9 @@ class Water extends React.Component {
             <div class="wrapper">
                 <a href="/new"><button class="plus">+</button></a>
             </div>
+
+
+
 
         </Layout>
     );

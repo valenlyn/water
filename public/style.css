@@ -59,6 +59,16 @@ a:hover {
 	margin: 20px 70px;
 }
 
+.notification {
+	background-color: none;
+	margin: 0px;
+	height: 70px;
+}
+
+.layout-wrap {
+	margin: 10px 0;
+}
+
 /*@media only screen and (max-width: 900px) {
 
 }*/

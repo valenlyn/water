@@ -5,6 +5,29 @@
  */
 module.exports = (dbPoolInstance) => {
 
+    let airtableAddReminder = (values) => {
+
+        var Airtable = require('airtable');
+        var base = new Airtable({apiKey: 'keyS3h9yowOlUCiPJ'}).base('appWHPu9AQrISrHiq');
+
+        let date = values.next_water_date;
+
+        // Adding at extra day to this date because ISO string ignores time, and we need the date formatted into ISO String for Airtable to parse
+        date.setDate(date.getDate() + 1);
+
+        base('Table 1').create({
+          "plant_id": values.plant_id,
+          "plant_name": values.plant_name,
+          "owner_name": values.owner_name,
+          "email": values.owner_email,
+          "date": date.toISOString().split('T')[0],
+          "reminder_type": values.reminder_type
+        }, function(err, record) {
+            if (err) { console.error(err); return; }
+            console.log(record.getId());
+        });
+    }
+
     let waterPlantsToday = (data, callback) => {
 
         let date = new Date().toISOString().split('T')[0];
@@ -50,26 +73,17 @@ module.exports = (dbPoolInstance) => {
 
                     } else { // Create new row on Airtable to add notifications
 
-                        var Airtable = require('airtable');
-                        var base = new Airtable({apiKey: 'keyS3h9yowOlUCiPJ'}).base('appWHPu9AQrISrHiq');
+                        let values = {
+                                    next_water_date: queryResult.rows[0].next_water_date,
+                                    plant_id: queryResult.rows[0].id,
+                                    plant_name: queryResult.rows[0].nickname,
+                                    owner_name: queryResultOwner.rows[0].name,
+                                    owner_email: queryResultOwner.rows[0].email,
+                                    reminder_type: queryResult.rows[0].reminder_type
+                                }
 
-                        let date = queryResult.rows[0].next_water_date;
-
-                        // Adding at extra day to this date because ISO string ignores time, and we need the date formatted into ISO String for Airtable to parse
-                        date.setDate(date.getDate() + 1);
-
-                        base('Table 1').create({
-                          "plant_id": queryResult.rows[0].id,
-                          "name": queryResult.rows[0].nickname,
-                          "owner_name": queryResultOwner.rows[0].name,
-                          "email": queryResultOwner.rows[0].email,
-                          "date": date.toISOString().split('T')[0],
-                          "reminder_type": queryResult.rows[0].reminder_type
-                        }, function(err, record) {
-                            if (err) { console.error(err); return; }
-                            console.log(record.getId());
-                        });
-                    callback(queryResult.rows);
+                        airtableAddReminder(values);
+                        callback(queryResult.rows);
 
                     }
                 })
@@ -91,7 +105,7 @@ module.exports = (dbPoolInstance) => {
 
                 let frequency = queryResult.rows[0].frequency;
 
-                let queryTwo = `UPDATE plants SET next_water_date=(current_date + ${frequency}), watered=false WHERE id=${data.plant_id} RETURNING next_water_date`;
+                let queryTwo = `UPDATE plants SET next_water_date=(current_date + ${frequency}), watered=false WHERE id=${data.plant_id} RETURNING *`;
 
                 dbPoolInstance.query(queryTwo, (error, queryResultTwo) => {
 
@@ -101,43 +115,48 @@ module.exports = (dbPoolInstance) => {
 
                     } else {
 
-                        console.log("Managed to update " +data.plant_id+ "!!!!!!!!!!!!!!!!!");
-
                         let queryAddWateredRow = `INSERT INTO watered (plant_id, watered_by) VALUES (${data.plant_id}, ${data.owner_id})`
 
                         dbPoolInstance.query(queryAddWateredRow, (error, queryResultThree) => {
 
                             if (error) {
+
                                 callback(error, null);
+
                             } else {
 
-                                callback(queryResult.rows);
+                                let queryOwner = `SELECT * FROM owners WHERE id=${data.owner_id}`;
 
-                                // var Airtable = require('airtable');
-                                // var base = new Airtable({apiKey: 'keyS3h9yowOlUCiPJ'}).base('appWHPu9AQrISrHiq');
+                                dbPoolInstance.query(queryOwner, (error, queryResultOwner) => {
 
-                                // let newDate = queryResultTwo.rows[0].next_water_date.toISOString().split('T')[0];
+                                    if (error) {
 
-                                // console.log("THIS IS NEW DATEE" + newDate);
+                                        callback(error);
 
-                                // base('Table 1').create({
-                                //   "plant_id": parseInt(data.plant_id),
-                                //   "name": `${queryResult.rows[0].nickname}`,
-                                //   "email": "valenlynchua@gmail.com",
-                                //   "date": `${newDate}`
-                                // }, function(err, record) {
-                                //     if (err) { console.error(err); return; }
-                                //     console.log(record.getId());
-                                // });
+                                    } else {
 
+                                        let values = {
+                                            next_water_date: queryResultTwo.rows[0].next_water_date,
+                                            plant_id: queryResultTwo.rows[0].id,
+                                            plant_name: queryResultTwo.rows[0].nickname,
+                                            owner_name: queryResultOwner.rows[0].name,
+                                            owner_email: queryResultOwner.rows[0].email,
+                                            reminder_type: queryResultTwo.rows[0].reminder_type
+                                        }
+
+                                       airtableAddReminder(values);
+                                       callback(queryResult.rows);
+
+                                    }
+                                })
                             }
                         })
+
                     }
-                })
+                });
 
             }
         });
-
     }
 
   return {
