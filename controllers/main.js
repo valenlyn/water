@@ -13,6 +13,7 @@ module.exports = (db) => {
 
         if (!request.cookies.loggedin) {
             response.render('main/main');
+
         } else {
 
             let owner_id = request.cookies.loggedin.split('V')[0];
@@ -23,7 +24,14 @@ module.exports = (db) => {
 
             let getWaterPlantsToday = (result) => {
 
-                response.render('main/water', {plants: result});
+                let nickname = request.cookies.nickname;
+                let nextWaterDate = request.cookies.nextWaterDate;
+                response.clearCookie('nextWaterDate');
+                response.clearCookie('nickname');
+
+                response.render('main/water', {nickname: nickname, nextWaterDate: nextWaterDate, plants: result});
+
+
 
             }
 
@@ -86,6 +94,7 @@ module.exports = (db) => {
 
                 let secretCookie = result.user.id + "V" + sha256(SALT + data.username);
                 response.cookie('loggedin', secretCookie);
+
 
 
                 response.render('main/water', {plants: result.plants});

@@ -99,8 +99,13 @@ module.exports = (db) => {
             }
 
             const doneWithQuery = (result) => {
-                console.log(result);
+
+                let date = result[0].next_water_date.toISOString().split('T')[0];
+
+                response.cookie('nickname', result[0].nickname);
+                response.cookie('nextWaterDate', date);
                 response.redirect('/');
+
             }
 
             db.plants.wateredPlant(data, doneWithQuery);

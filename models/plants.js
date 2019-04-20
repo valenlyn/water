@@ -74,13 +74,13 @@ module.exports = (dbPoolInstance) => {
                     } else { // Create new row on Airtable to add notifications
 
                         let values = {
-                                    next_water_date: queryResult.rows[0].next_water_date,
-                                    plant_id: queryResult.rows[0].id,
-                                    plant_name: queryResult.rows[0].nickname,
-                                    owner_name: queryResultOwner.rows[0].name,
-                                    owner_email: queryResultOwner.rows[0].email,
-                                    reminder_type: queryResult.rows[0].reminder_type
-                                }
+                                        next_water_date: queryResult.rows[0].next_water_date,
+                                        plant_id: queryResult.rows[0].id,
+                                        plant_name: queryResult.rows[0].nickname,
+                                        owner_name: queryResultOwner.rows[0].name,
+                                        owner_email: queryResultOwner.rows[0].email,
+                                        reminder_type: queryResult.rows[0].reminder_type
+                                    }
 
                         airtableAddReminder(values);
                         callback(queryResult.rows);
@@ -93,7 +93,7 @@ module.exports = (dbPoolInstance) => {
 
     let wateredPlant = (data, callback) => {
 
-        let query = `UPDATE plants SET watered=true WHERE id=${data.plant_id} RETURNING frequency, nickname`;
+        let query = `UPDATE plants SET watered=true WHERE id=${data.plant_id} RETURNING *`;
 
         dbPoolInstance.query(query, (error, queryResult) => {
 
@@ -145,7 +145,7 @@ module.exports = (dbPoolInstance) => {
                                         }
 
                                        airtableAddReminder(values);
-                                       callback(queryResult.rows);
+                                       callback(queryResultTwo.rows);
 
                                     }
                                 })

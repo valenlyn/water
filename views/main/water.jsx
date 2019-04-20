@@ -7,9 +7,6 @@ var Notification = require('../main/notification.jsx');
 class Water extends React.Component {
   render() {
 
-    //set message to render here
-
-    console.log(this.props);
     // Get date
     const options = {month: 'long'};
     let month = new Date().toLocaleDateString("en-GB", options);
@@ -34,10 +31,10 @@ class Water extends React.Component {
     let message;
 
     // If plant was just watered, plant's details go in here:
-    if (this.props.message == "success") {
-        message = <Notification name={this.props.plants[0].nickname} next_water_date="2019-04-22"/>
+    if (this.props.nickname) {
+        message = <Notification name={this.props.nickname} next_water_date={this.props.nextWaterDate}/>
     } else {
-        message = <Notification name={this.props.plants[0].nickname} next_water_date="2019-04-22"/>
+        message = <div class="notification"></div>;
     }
 
 
