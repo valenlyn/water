@@ -31,7 +31,7 @@ class New extends React.Component {
                             <label for="exampleFormControlSelect1">Choose how you'd like to be reminded to water this plant</label>
                             <select class="form-control" id="exampleFormControlSelect1" name="reminder_type">
                                 <option value="email">Email</option>
-                                <option value="cal">Calendar event</option>
+                                <option value="cal">Google calendar event</option>
                                 <option>None</option>
                             </select>
                           </div>
@@ -42,7 +42,7 @@ class New extends React.Component {
                         </div>
 
                         <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                        <button type="submit" formaction="/new" class="btn btn-primary mb-2 ml-2">Submit and add another</button>
+                        <button type="submit" formaction="/newAndAnother" class="btn btn-primary mb-2 ml-2">Submit and add another</button>
                     </form>
                         </div>
 

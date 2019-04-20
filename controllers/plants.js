@@ -42,9 +42,41 @@ module.exports = (db) => {
                 reminder_type: request.body.reminder_type
             };
 
+            //date here is right
+            console.log("THIS IS THE DATE THAT I AM TAKING FROM REQUEST.BODY AND SENDING TO THE MODEL:  "+ request.body.next_water_date);
+
             const doneWithQuery = (result) => {
                 console.log(result);
                 response.redirect('/');
+            }
+
+            db.plants.addPlant(data, doneWithQuery);
+
+        }
+    }
+
+    let receiveAddPlantRequestAndAdd = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            let id = request.cookies.loggedin.split('V')[0];
+
+            let data = {
+                name: request.body.name,
+                nickname: request.body.nickname,
+                next_water_date: request.body.next_water_date,
+                frequency: request.body.frequency,
+                owner_id: id,
+                reminder_type: request.body.reminder_type
+            };
+
+            const doneWithQuery = (result) => {
+                console.log(result);
+                response.render('main/newplant');
             }
 
             db.plants.addPlant(data, doneWithQuery);
@@ -88,6 +120,7 @@ module.exports = (db) => {
   return {
     addPlant,
     receiveAddPlantRequest,
+    receiveAddPlantRequestAndAdd,
     water
   };
 

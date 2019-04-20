@@ -9,7 +9,8 @@ module.exports = (dbPoolInstance) => {
 
         let date = new Date().toISOString().split('T')[0];
 
-        let query = `SELECT * FROM plants WHERE (alive=true AND watered=false AND next_water_date <='${date}' AND owner_id=${data.owner_id})`;
+        let query = `SELECT * FROM plants INNER JOIN owners ON (plants.owner_id=owners.id) WHERE (alive=true AND watered=false AND next_water_date <='${date}' AND owner_id=${data.owner_id})`;
+
 
         dbPoolInstance.query(query, (error, queryResult) => {
 
@@ -28,11 +29,8 @@ module.exports = (dbPoolInstance) => {
 
     let addPlant = (data, callback) => {
 
-        // let date = new Date().toISOString().split('T')[0];
-        // console.log(request.body);
 
-        console.log(data);
-
+        // Query to insert new plant into DB, returns newly added row
         let query = `INSERT INTO plants (name, nickname, next_water_date, frequency, owner_id, reminder_type) VALUES ('${data.name}', '${data.nickname}', '${data.next_water_date}', ${data.frequency}, ${data.owner_id}, '${data.reminder_type}') RETURNING *`;
 
         dbPoolInstance.query(query, (error, queryResult) => {
@@ -41,28 +39,41 @@ module.exports = (dbPoolInstance) => {
 
                 callback(error, null);
 
-            } else {
+            } else { // Make another query to get the owner's details
 
-                var Airtable = require('airtable');
-                var base = new Airtable({apiKey: 'keyS3h9yowOlUCiPJ'}).base('appWHPu9AQrISrHiq');
+                let queryOwner = `SELECT * FROM owners WHERE id=${data.owner_id}`;
 
-                let date = queryResult.rows[0].next_water_date.toISOString().split('T')[0];
+                dbPoolInstance.query(queryOwner, (error, queryResultOwner) => {
 
-                base('Table 1').create({
-                  "plant_id": parseInt(data.plant_id),
-                  "name": `${queryResult.rows[0].nickname}`,
-                  "email": "valenlynchua@gmail.com",
-                  "date": `${date}`,
-                  "reminder_type": queryResult.rows[0].reminder_type
-                }, function(err, record) {
-                    if (err) { console.error(err); return; }
-                    console.log(record.getId());
-                });
+                    if (error) {
 
-                callback(queryResult.rows);
-                console.log(queryResult.rows)
+                        callback(error);
 
+                    } else { // Create new row on Airtable to add notifications
 
+                        var Airtable = require('airtable');
+                        var base = new Airtable({apiKey: 'keyS3h9yowOlUCiPJ'}).base('appWHPu9AQrISrHiq');
+
+                        let date = queryResult.rows[0].next_water_date;
+
+                        // Adding at extra day to this date because ISO string ignores time, and we need the date formatted into ISO String for Airtable to parse
+                        date.setDate(date.getDate() + 1);
+
+                        base('Table 1').create({
+                          "plant_id": queryResult.rows[0].id,
+                          "name": queryResult.rows[0].nickname,
+                          "owner_name": queryResultOwner.rows[0].name,
+                          "email": queryResultOwner.rows[0].email,
+                          "date": date.toISOString().split('T')[0],
+                          "reminder_type": queryResult.rows[0].reminder_type
+                        }, function(err, record) {
+                            if (err) { console.error(err); return; }
+                            console.log(record.getId());
+                        });
+                    callback(queryResult.rows);
+
+                    }
+                })
             }
         });
     }
@@ -101,25 +112,22 @@ module.exports = (dbPoolInstance) => {
 
                                 callback(queryResult.rows);
 
-                                var Airtable = require('airtable');
-                                var base = new Airtable({apiKey: 'keyS3h9yowOlUCiPJ'}).base('appWHPu9AQrISrHiq');
+                                // var Airtable = require('airtable');
+                                // var base = new Airtable({apiKey: 'keyS3h9yowOlUCiPJ'}).base('appWHPu9AQrISrHiq');
 
+                                // let newDate = queryResultTwo.rows[0].next_water_date.toISOString().split('T')[0];
 
+                                // console.log("THIS IS NEW DATEE" + newDate);
 
-                                let newDate = queryResultTwo.rows[0].next_water_date.toISOString().split('T')[0];
-
-
-                                console.log("THIS IS NEW DATEE" + newDate);
-
-                                base('Table 1').create({
-                                  "plant_id": parseInt(data.plant_id),
-                                  "name": `${queryResult.rows[0].nickname}`,
-                                  "email": "valenlynchua@gmail.com",
-                                  "date": `${newDate}`
-                                }, function(err, record) {
-                                    if (err) { console.error(err); return; }
-                                    console.log(record.getId());
-                                });
+                                // base('Table 1').create({
+                                //   "plant_id": parseInt(data.plant_id),
+                                //   "name": `${queryResult.rows[0].nickname}`,
+                                //   "email": "valenlynchua@gmail.com",
+                                //   "date": `${newDate}`
+                                // }, function(err, record) {
+                                //     if (err) { console.error(err); return; }
+                                //     console.log(record.getId());
+                                // });
 
                             }
                         })
@@ -130,8 +138,6 @@ module.exports = (dbPoolInstance) => {
         });
 
     }
-
-
 
   return {
 
