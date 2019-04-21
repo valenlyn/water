@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS plants (
 	name TEXT,
 	nickname TEXT,
 	frequency INTEGER,
-	img TEXT,
+	img TEXT DEFAULT 'https://res.cloudinary.com/water123/image/upload/v1555840305/defaultplant_g3pcfc.png',
 	next_water_date DATE,
 	watered BOOLEAN DEFAULT false,
 	created_at TIMESTAMPTZ DEFAULT now(),

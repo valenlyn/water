@@ -1,6 +1,6 @@
 var React = require("react");
 var Layout = require('../layout/layout.jsx');
-var Cards = require('../main/cards.jsx');
+var Cards = require('../main/cards2.jsx');
 var Notification = require('../main/notification.jsx');
 
 
@@ -10,23 +10,43 @@ class Water extends React.Component {
     // Get date
     const options = {month: 'long'};
     let month = new Date().toLocaleDateString("en-GB", options);
-    let today = new Date().getDate() + " "+ month;
+    let todayDisplay = new Date().getDate() + " "+ month;
 
     console.log(this.props.plants);
+
+
+    // Calculate how many days plant is overdue
+    // Do two maps to find plants that are > 3 days overdue
+    let today = new Date();
+    let difference = Math.round((today - this.props.plants.next_water_date)/(1000*60*60*24));
+    // let itemsElements = this.props.bar.map(fruit => {
+
+      // return fruit.colors.map(color => {
+      //           return <ListItem color={color} foo={fruit.name}/>
+      //       })
+
+      //                       });
+
 
 
     // Render plants
     let plants;
 
     if (this.props.plants == "") {
-        plants = "All your plants are hydrated :-)"
-    } else {
-        plants = this.props.plants.map(plant => {
-            let plantLink = `/plants/${plant.id}`
 
-        return <Cards name={plant.nickname} nickname={plant.name} id={plant.id} img={plant.img}/>
-    })
+        plants = "All your plants are hydrated :-)"
+
+    } else {
+
+        plants = this.props.plants.map(plant => {
+
+            let plantLink = `/plants/${plant.id}`;
+
+            return <Cards style="box" name={plant.nickname} nickname={plant.name} id={plant.id} img={plant.img}/>
+
+        })
     }
+
 
     let message;
 
@@ -43,10 +63,10 @@ class Water extends React.Component {
 
             {message}
 
-            <p class="date">{today} </p>
+            <p class="date">{todayDisplay} </p>
 
             <div class="card-wrapper">
-                <div class="row d-flex">
+                <div class="row d-flex justify-content-center">
                     {plants}
                 </div>
             </div>

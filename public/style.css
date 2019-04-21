@@ -21,7 +21,7 @@
 	color:#f5f5f5;
 	text-align:center;
 	text-decoration:none;
-	background: #2E8B57;
+	background: #ffbe42;
 	border: none;
 	font-size: 50px;
 	font-weight: bold;
@@ -32,7 +32,7 @@
 }
 
 .plus:hover {
-	opacity: 0.7;
+	background: #ffb529;
 }
 
 a:hover plus {
@@ -50,9 +50,8 @@ a:hover plus {
 }
 
 .water {
-	position: absolute;
-	bottom: 50%;
-	right: 50%;
+	border-radius: 3px;
+	margin: 2px auto;
 }
 
 .card-wrapper {
@@ -67,6 +66,75 @@ a:hover plus {
 
 .layout-wrap {
 	margin: 10px 0;
+}
+
+.box-wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.box {
+	height: 390px;
+	width: 300px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #2E8B57;
+	margin: 10px 15px;
+	display: flex;
+	align-content: space-around;
+	flex-direction: column;
+	position: relative;
+}
+
+.box-danger {
+	height: 390px;
+	width: 300px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #9f0c0c;
+	margin: 10px 15px;
+	display: flex;
+	align-content: space-around;
+	flex-direction: column;
+	position: relative;
+}
+
+.box-title {
+	color: white;
+	font-family: 'Prata', serif;
+	padding-top: 10px;
+	margin: 2px;
+	text-align: center;
+}
+
+.box-title:hover {
+	color: black;
+	text-transform: none;
+}
+
+.box-subtitle {
+	color: gray;
+	font-family: 'Prata', serif;
+	text-transform: lowercase;
+	font-style: italic;
+	text-align: center;
+	margin: 0;
+	color: #f5f5dc;
+}
+
+h4 {
+	margin: 0;
+}
+
+.actions {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	margin: 10px auto;
+}
+
+.edit {
+	display: inline;
 }
 
 /*@media only screen and (max-width: 900px) {
