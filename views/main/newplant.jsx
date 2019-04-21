@@ -5,10 +5,12 @@ class New extends React.Component {
 
   render() {
 
+
+
     return (
         <Layout>
             <div class="col-lg-6 col-xs-6">
-                    <form method="POST" action="/new">
+                    <form method="POST" action="/new" enctype="multipart/form-data">
                         <h1>Add a new plant</h1>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Species / genus</label>
@@ -27,7 +29,15 @@ class New extends React.Component {
                             </div>
                         </div>
 
+
                         <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Plant img</label>
+                                <input type='file' id="img" name="img" src="#" class="form-control"/>
+                        </div>
+
+                        <div class="form-group">
+
+
                             <label for="exampleFormControlSelect1">Choose how you'd like to be reminded to water this plant</label>
                             <select class="form-control" id="exampleFormControlSelect1" name="reminder_type">
                                 <option value="email">Email</option>
@@ -35,6 +45,7 @@ class New extends React.Component {
                                 <option>None</option>
                             </select>
                           </div>
+
 
                         <div class="form-group">
                             <label for="exampleFormControlInput1">How often does your plant require watering? (In days)</label>
@@ -44,8 +55,11 @@ class New extends React.Component {
                         <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         <button type="submit" formaction="/newAndAnother" class="btn btn-primary mb-2 ml-2">Submit and add another</button>
                     </form>
-                        </div>
 
+
+
+
+                        </div>
         </Layout>
     );
   }

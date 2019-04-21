@@ -16,7 +16,7 @@ class Cards extends React.Component {
                 </form>
 
 
-                <img class="card-img-top" src="" alt={this.props.name} style={{height: '13rem',objectFit: 'cover'}}/>
+                <img class="card-img-top" src={this.props.img} alt={this.props.name} style={{height: '13rem',objectFit: 'cover'}}/>
 
                 <div class="card-body">
 

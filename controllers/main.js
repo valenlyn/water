@@ -31,8 +31,6 @@ module.exports = (db) => {
 
                 response.render('main/water', {nickname: nickname, nextWaterDate: nextWaterDate, plants: result});
 
-
-
             }
 
             db.plants.waterPlantsToday(data, getWaterPlantsToday);

@@ -1,6 +1,14 @@
 const sha256 = require('js-sha256');
 const SALT = 'shrek';
 
+var cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  cloud_name: 'water123',
+  api_key: '585826636463395',
+  api_secret: 'REbcCbBSBYXWToZh0fIGCYt2Zxs'
+});
+
 module.exports = (db) => {
 
   /**
@@ -31,24 +39,36 @@ module.exports = (db) => {
 
         } else {
 
-            let id = request.cookies.loggedin.split('V')[0];
+            console.log(request.file);
 
-            let data = {
-                name: request.body.name,
-                nickname: request.body.nickname,
-                next_water_date: request.body.next_water_date,
-                frequency: request.body.frequency,
-                owner_id: id,
-                reminder_type: request.body.reminder_type
-            };
+            let url = "";
 
-            const doneWithQuery = (result) => {
+            cloudinary.uploader.upload(request.file.path, function(error, result) {
+                console.log(result, error)
 
-                response.redirect('/');
+                url = result.url;
 
-            }
+                let id = request.cookies.loggedin.split('V')[0];
 
-            db.plants.addPlant(data, doneWithQuery);
+                    let data = {
+                        name: request.body.name,
+                        nickname: request.body.nickname,
+                        next_water_date: request.body.next_water_date,
+                        frequency: request.body.frequency,
+                        owner_id: id,
+                        reminder_type: request.body.reminder_type,
+                        img: url
+                    };
+
+                    const doneWithQuery = (result) => {
+
+                        response.redirect('/');
+
+                    }
+
+                    db.plants.addPlant(data, doneWithQuery);
+
+            });
 
         }
     }

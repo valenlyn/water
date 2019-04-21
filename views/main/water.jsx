@@ -24,7 +24,7 @@ class Water extends React.Component {
         plants = this.props.plants.map(plant => {
             let plantLink = `/plants/${plant.id}`
 
-        return <Cards name={plant.nickname} nickname={plant.name} id={plant.id}/>
+        return <Cards name={plant.nickname} nickname={plant.name} id={plant.id} img={plant.img}/>
     })
     }
 

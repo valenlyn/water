@@ -53,7 +53,7 @@ module.exports = (dbPoolInstance) => {
     let addPlant = (data, callback) => {
 
         // Query to insert new plant into DB, returns newly added row
-        let query = `INSERT INTO plants (name, nickname, next_water_date, frequency, owner_id, reminder_type) VALUES ('${data.name}', '${data.nickname}', '${data.next_water_date}', ${data.frequency}, ${data.owner_id}, '${data.reminder_type}') RETURNING *`;
+        let query = `INSERT INTO plants (name, nickname, next_water_date, frequency, owner_id, reminder_type, img) VALUES ('${data.name}', '${data.nickname}', '${data.next_water_date}', ${data.frequency}, ${data.owner_id}, '${data.reminder_type}', '${data.img}') RETURNING *`;
 
         dbPoolInstance.query(query, (error, queryResult) => {
 
