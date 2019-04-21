@@ -16,15 +16,14 @@ class Water extends React.Component {
 
 
     // Calculate how many days plant is overdue
-    // Do two maps to find plants that are > 3 days overdue
-    let today = new Date();
-    let difference = Math.round((today - this.props.plants.next_water_date)/(1000*60*60*24));
+    // Do two maps to find plants that are > 1 day overdue (i.e. next_water_date = yesterday's date)
+    // let today = new Date();
+    // let difference = Math.round((today - this.props.plants.next_water_date)/(1000*60*60*24));
     // let itemsElements = this.props.bar.map(fruit => {
 
       // return fruit.colors.map(color => {
       //           return <ListItem color={color} foo={fruit.name}/>
       //       })
-
       //                       });
 
 
@@ -42,11 +41,10 @@ class Water extends React.Component {
 
             let plantLink = `/plants/${plant.id}`;
 
-            return <Cards style="box" name={plant.nickname} nickname={plant.name} id={plant.id} img={plant.img}/>
+            return <Cards style="box" name={plant.name} nickname={plant.nickname} id={plant.id} img={plant.img} instructions={plant.instructions}/>
 
         })
     }
-
 
     let message;
 

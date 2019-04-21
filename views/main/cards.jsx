@@ -24,7 +24,7 @@ class Cards extends React.Component {
 
 
 
-                    <p class="card-text text-secondary mt-1">{this.props.name}</p>
+                    <p class="card-text text-secondary mt-1">{this.props.name} {this.props.instructions}</p>
 
                 </div>
 

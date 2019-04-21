@@ -12,10 +12,11 @@ class Cards2 extends React.Component {
             <div class={this.props.style}>
                 <img class="card-img" src={this.props.img} alt={this.props.nickname} style={{height: '14rem',objectFit: 'cover'}}/>
                 <a href={link} class="box-title"><h4 class="">{this.props.nickname}</h4></a>
-                <p class="box-subtitle">{this.props.name}</p>
+                <span class="box-instructions"><span class="box-subtitle">{this.props.name}</span> / {this.props.instructions}</span>
+
                 <div class="actions">
                     <form method="POST">
-                        <button type="submit" formaction={formAction} class="water">💦 WATER </button>
+                        <button type="submit" formaction={formAction} class="water">mark as watered</button>
 
                     </form>
 

@@ -51,7 +51,12 @@ a:hover plus {
 
 .water {
 	border-radius: 3px;
-	margin: 2px auto;
+	margin: 3px auto;
+	background: #fde440;
+	border: 0px;
+	font-family: 'Prata', serif;
+	font-weight: 700;
+	font-size: 20px;
 }
 
 .card-wrapper {
@@ -74,9 +79,8 @@ a:hover plus {
 }
 
 .box {
-	height: 390px;
 	width: 300px;
-	padding: 10px;
+	padding: 12px;
 	border-radius: 5px;
 	background-color: #2E8B57;
 	margin: 10px 15px;
@@ -87,9 +91,8 @@ a:hover plus {
 }
 
 .box-danger {
-	height: 390px;
 	width: 300px;
-	padding: 10px;
+	padding: 15px;
 	border-radius: 5px;
 	background-color: #9f0c0c;
 	margin: 10px 15px;
@@ -113,12 +116,19 @@ a:hover plus {
 }
 
 .box-subtitle {
-	color: gray;
 	font-family: 'Prata', serif;
 	text-transform: lowercase;
 	font-style: italic;
 	text-align: center;
 	margin: 0;
+	color: #d3d4bd;
+}
+
+.box-instructions {
+	font-family: 'Chivo', sans-serif;
+	font-weight: 300;
+	text-align: center;
+	margin-bottom: 49px;
 	color: #f5f5dc;
 }
 
@@ -128,15 +138,55 @@ h4 {
 
 .actions {
 	position: absolute;
-	width: 100%;
 	bottom: 0;
-	margin: 10px auto;
+	margin: 12px auto;
+	width: 276px;
+	display: flex;
+	justify-content: center;
 }
 
 .edit {
 	display: inline;
 }
 
-/*@media only screen and (max-width: 900px) {
+@media (orientation: portrait) {
 
-}*/
+/*	.card-wrapper {
+		margin: 20px 15px;
+	}
+
+	body {
+		background-color: pink;
+	}*/
+
+	.box {
+	width: 400px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #2E8B57;
+	margin: 10px 15px;
+	display: flex;
+	align-content: space-around;
+	flex-direction: column;
+	position: relative;
+	}
+
+	.box-instructions {
+	font-family: 'Chivo', sans-serif;
+	font-weight: 300;
+	text-align: center;
+	margin-bottom: 60px;
+	color: #f5f5dc;
+	}
+
+	.actions {
+	position: absolute;
+	bottom: 0;
+	margin: 20px auto;
+	width: 380px;
+	display: flex;
+	justify-content: center;
+	}
+
+
+}
