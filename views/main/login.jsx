@@ -34,7 +34,7 @@ class LogIn extends React.Component {
         {nav}
 
             <div class="row d-flex m-5 justify-content-center">
-                <div class="col-3">
+                <div class="col-lg-4 col-xs-8 col-sm-8">
                     <div class="date">Log in</div>
                     <form method="POST" action="/">
                         {message}

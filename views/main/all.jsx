@@ -29,7 +29,7 @@ class Test extends React.Component {
             let today = new Date();
             let date = plant.next_water_date
 
-            // let daysLeft = Math.round((date - today)/(1000*60*60*24)) +1;
+            // let daysLeft = Math.round((date - today)/(1000*60*60*24)) -1;
             let daysLeft = Math.round((date - today)/(1000*60*60*24));
 
 
