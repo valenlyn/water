@@ -95,16 +95,19 @@ class Test extends React.Component {
                 <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th scope="col">Species / Genus</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Due</th>
-                          <th scope="col">Instructions</th>
+                          <th scope="col" id="tb-species">Species / Genus</th>
+                          <th scope="col" id="tb-name">Name</th>
+                          <th scope="col" id="tb-due">Due</th>
+                          <th scope="col" id="tb-instructions">Instructions</th>
                         </tr>
                       </thead>
                       <tbody>
                             {plants}
                       </tbody>
                 </table>
+            <div class="wrapper">
+                <a href="/new"><button class="plus">+</button></a>
+            </div>
         </Layout>
     );
   }

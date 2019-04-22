@@ -1,6 +1,6 @@
--- INSERT INTO owners (email, name, password) VALUES ('valenlyn@live.com', 'Bobby', '9735e2ad2dd5652f6e34f5ee339c34b2946fa7ec78ce405875b544726fa78858');
--- INSERT INTO owners (email, name, password) VALUES ('valenlyn@u.nus.edu', 'James', '9735e2ad2dd5652f6e34f5ee339c34b2946fa7ec78ce405875b544726fa78858');
--- INSERT INTO owners (email, name, password) VALUES ('valenlynchua@gmail.com', 'Edith', '9735e2ad2dd5652f6e34f5ee339c34b2946fa7ec78ce405875b544726fa78858');
+INSERT INTO owners (email, name, password) VALUES ('valenlyn@live.com', 'Bobby', '9735e2ad2dd5652f6e34f5ee339c34b2946fa7ec78ce405875b544726fa78858');
+INSERT INTO owners (email, name, password) VALUES ('valenlyn@u.nus.edu', 'James', '9735e2ad2dd5652f6e34f5ee339c34b2946fa7ec78ce405875b544726fa78858');
+INSERT INTO owners (email, name, password) VALUES ('valenlynchua@gmail.com', 'Edith', '9735e2ad2dd5652f6e34f5ee339c34b2946fa7ec78ce405875b544726fa78858');
 
 
 

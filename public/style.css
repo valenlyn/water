@@ -166,6 +166,10 @@ nav {
 	color: white;
 }
 
+#tb-species {
+	width: 150px;
+}
+
 @media (orientation: portrait) and (max-width: 1064px) {
 
 /*	.card-wrapper {

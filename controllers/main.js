@@ -27,11 +27,11 @@ module.exports = (db) => {
                 response.clearCookie('all');
 
                 let nickname = request.cookies.nickname;
-                let nextWaterDate = request.cookies.nextWaterDate;
-                response.clearCookie('nextWaterDate');
+                let daysLeft = request.cookies.daysLeft;
+                response.clearCookie('daysLeft');
                 response.clearCookie('nickname');
 
-                response.render('main/water', {nickname: nickname, nextWaterDate: nextWaterDate, plants: result});
+                response.render('main/water', {nickname: nickname, daysLeft: daysLeft, plants: result});
 
             }
 

@@ -57,7 +57,8 @@ module.exports = (db) => {
                         frequency: request.body.frequency,
                         owner_id: id,
                         reminder_type: request.body.reminder_type,
-                        img: url
+                        img: url,
+                        instructions: request.body.instructions
                     };
 
                     const doneWithQuery = (result) => {
@@ -81,24 +82,33 @@ module.exports = (db) => {
 
         } else {
 
-            let id = request.cookies.loggedin.split('V')[0];
+            let url = "";
 
-            let data = {
-                name: request.body.name,
-                nickname: request.body.nickname,
-                next_water_date: request.body.next_water_date,
-                frequency: request.body.frequency,
-                owner_id: id,
-                reminder_type: request.body.reminder_type
-            };
+            cloudinary.uploader.upload(request.file.path, function(error, result) {
+                console.log(result, error)
 
-            const doneWithQuery = (result) => {
-                console.log(result);
-                response.render('main/newplant');
-            }
+                url = result.url;
 
-            db.plants.addPlant(data, doneWithQuery);
+                let id = request.cookies.loggedin.split('V')[0];
 
+                    let data = {
+                        name: request.body.name,
+                        nickname: request.body.nickname,
+                        next_water_date: request.body.next_water_date,
+                        frequency: request.body.frequency,
+                        owner_id: id,
+                        reminder_type: request.body.reminder_type,
+                        img: url,
+                        instructions: request.body.instructions
+                    };
+
+                const doneWithQuery = (result) => {
+                    console.log(result);
+                    response.render('main/newplant');
+                }
+
+                db.plants.addPlant(data, doneWithQuery);
+            });
         }
     }
 
@@ -120,10 +130,12 @@ module.exports = (db) => {
 
             const doneWithQuery = (result) => {
 
-                let date = result[0].next_water_date.toISOString().split('T')[0];
+                let date = result[0].next_water_date;
+                let today = new Date();
+                let daysLeft = Math.round((date - today)/(1000*60*60*24)) +1;
 
                 response.cookie('nickname', result[0].nickname);
-                response.cookie('nextWaterDate', date);
+                response.cookie('daysLeft', daysLeft);
 
                 if (!request.cookies.all) {
                     response.redirect('/');

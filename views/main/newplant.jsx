@@ -34,28 +34,29 @@ class New extends React.Component {
                                 <input type='file' id="img" name="img" src="#" class="form-control"/>
                         </div>
 
-                        <div class="form-group">
-
-
-                            <label for="exampleFormControlSelect1">Choose how you'd like to be reminded to water this plant</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="reminder_type">
-                                <option value="email">Email</option>
-                                <option value="cal">Google calendar event</option>
-                                <option>None</option>
-                            </select>
-                          </div>
-
 
                         <div class="form-group">
                             <label for="exampleFormControlInput1">How often does your plant require watering? (In days)</label>
                                 <input type="number" class="form-control" name="frequency" placeholder="10"/>
                         </div>
 
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Add some instructions on how to care for your plant</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="instructions" placeholder="Mist lightly until soil is damp"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Choose how you'd like to be reminded to water this plant</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="reminder_type">
+                                <option value="email">Email</option>
+                                <option value="cal">Google calendar event</option>
+                                <option>None</option>
+                            </select>
+                        </div>
+
                         <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                        <button type="submit" formaction="/newAndAnother" class="btn btn-primary mb-2 ml-2">Submit and add another</button>
+                        <button type="submit" action="/newAndAnother" class="btn btn-primary mb-2 ml-2">Submit and add another</button>
                     </form>
-
-
 
 
                         </div>
