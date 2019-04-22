@@ -24,6 +24,8 @@ module.exports = (db) => {
 
             let getWaterPlantsToday = (result) => {
 
+                response.clearCookie('all');
+
                 let nickname = request.cookies.nickname;
                 let nextWaterDate = request.cookies.nextWaterDate;
                 response.clearCookie('nextWaterDate');

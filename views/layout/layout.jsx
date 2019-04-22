@@ -17,7 +17,7 @@ class Layout extends React.Component {
             <div class="row">
                 <div class="col-lg-2">
                     <nav>
-                        <a href="#" class="nav-link">All Plants</a>
+                        <a href="/all" class="nav-link">All Plants</a>
                         <a href='#' class="nav-link">Settings</a>
                     </nav>
                 </div>

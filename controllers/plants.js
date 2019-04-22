@@ -124,7 +124,13 @@ module.exports = (db) => {
 
                 response.cookie('nickname', result[0].nickname);
                 response.cookie('nextWaterDate', date);
-                response.redirect('/');
+
+                if (!request.cookies.all) {
+                    response.redirect('/');
+                } else {
+                    response.redirect('/all');
+                }
+
 
             }
 
@@ -145,18 +151,52 @@ module.exports = (db) => {
 
             const data = {
                         id: id
-                        }
+                        };
 
             const doneWithQuery = (result) => {
 
-                response.send(result);
+                response.render('main/individual', {plant: result});
 
             }
 
-        db.plants.view(data, doneWithQuery);
+            db.plants.view(data, doneWithQuery);
+
         }
 
     }
+
+    let all = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            let owner_id = request.cookies.loggedin.split('V')[0];
+
+
+            let data = {
+                owner_id: owner_id
+            }
+
+            const doneWithQuery = (result) => {
+
+                let nickname = request.cookies.nickname;
+                let nextWaterDate = request.cookies.nextWaterDate;
+                response.clearCookie('nextWaterDate');
+                response.clearCookie('nickname');
+
+                response.cookie('all', '238409389dxc27938728dskc928');
+                response.render('main/all', {nickname: nickname, nextWaterDate: nextWaterDate, plants: result});
+
+            }
+
+            db.plants.showAll(data, doneWithQuery);
+
+        }
+    }
+
 
   /**
    * ===========================================
@@ -168,7 +208,8 @@ module.exports = (db) => {
     receiveAddPlantRequest,
     receiveAddPlantRequestAndAdd,
     water,
-    view
+    view,
+    all
   };
 
 }

@@ -47,7 +47,7 @@ module.exports = (app, allModels) => {
     app.get('/plants/:id', plants.view);
     // app.post('plants/:id/edit');
 
-    // app.get('/all',);
+    app.get('/all', plants.all);
     // app.get('/plants',);
 
 

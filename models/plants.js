@@ -32,7 +32,7 @@ module.exports = (dbPoolInstance) => {
 
         let date = new Date().toISOString().split('T')[0];
 
-        let query = `SELECT * FROM plants WHERE (alive=true AND watered=false AND next_water_date <='${date}' AND owner_id=${data.owner_id})`;
+        let query = `SELECT * FROM plants WHERE (alive=true AND watered=false AND next_water_date <='${date}' AND owner_id=${data.owner_id}) ORDER BY next_water_date ASC NULLS LAST`;
 
 
         dbPoolInstance.query(query, (error, queryResult) => {
@@ -177,12 +177,33 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+    let showAll = (data, callback) => {
+
+
+
+        let query = `SELECT * FROM plants WHERE owner_id=${data.owner_id} ORDER BY next_water_date ASC NULLS LAST`;
+
+        dbPoolInstance.query(query, (error, queryResult) => {
+
+            if (error) {
+
+                callback(error);
+
+            } else {
+
+                callback(queryResult.rows);
+
+            }
+        })
+    }
+
   return {
 
     waterPlantsToday,
     addPlant,
     wateredPlant,
-    view
+    view,
+    showAll
 
   };
 };

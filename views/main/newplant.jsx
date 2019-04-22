@@ -6,7 +6,6 @@ class New extends React.Component {
   render() {
 
 
-
     return (
         <Layout>
             <div class="col-lg-6 col-xs-6">
