@@ -197,13 +197,28 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    let editPlant = (data, callback) => {
+
+        let query = `UPDATE plants SET name='${data.name}', nickname='${data.nickname}', next_water_date='${data.next_water_date}', frequency=${data.frequency}, reminder_type='${data.reminder_type}', img='${data.img}, instructions='${data.instructions}' WHERE id=${data.id} RETURNING *`;
+
+        dbPoolInstance.query(query, (error, queryResult) => {
+
+            if (error) {
+                callback(error);
+            } else {
+                callback(queryResult.rows[0]);
+            }
+        })
+    }
+
   return {
 
     waterPlantsToday,
     addPlant,
     wateredPlant,
     showAll,
-    findSingle
+    findSingle,
+    editPlant
 
   };
 };

@@ -57,8 +57,8 @@ class Water extends React.Component {
             daysLeftDisplay = "in " + daysLeftDisplay + " days";
         }
 
-
-        message = <Notification name={this.props.nickname} daysLeft={daysLeftDisplay}/>
+        let link = `/plants/${this.props.id}/edit`
+        message = <Notification name={this.props.nickname} daysLeft={daysLeftDisplay} editLink={link}/>
     } else {
         message = <div class="notification"></div>;
     }

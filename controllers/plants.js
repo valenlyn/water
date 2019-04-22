@@ -150,6 +150,7 @@ module.exports = (db) => {
 
                 response.cookie('nickname', result[0].nickname);
                 response.cookie('daysLeft', daysLeft);
+                response.cookie('id', result[0].id);
 
                 if (!request.cookies.all) {
                     response.redirect('/');
@@ -212,8 +213,75 @@ module.exports = (db) => {
             }
     }
 
+    let edit = (request, response) => {
 
+        if (!request.cookies.loggedin) {
 
+            response.render('main/main');
+
+        } else {
+
+            let plant_id = request.params.id;
+
+            console.log(request.body);
+            console.log(request.body);
+            console.log(request.body);
+            console.log(request.body);
+            console.log(request.body);
+
+            let id = request.cookies.loggedin.split('V')[0];
+
+                let data = {
+                    id: plant_id,
+                    name: request.body.name,
+                    nickname: request.body.nickname,
+                    next_water_date: request.body.next_water_date,
+                    frequency: request.body.frequency,
+                    owner_id: id,
+                    reminder_type: request.body.reminder_type,
+                    // img: url,
+                    instructions: request.body.instructions
+                };
+
+                // console.log(data);
+
+                // console.log(data);
+                // console.log(data);
+                // console.log(data);
+                // console.log(data);
+
+            const doneWithQuery = (result) => {
+
+                response.render('main/single', {plant: result});
+
+            }
+
+            db.plants.editPlant(data, doneWithQuery);
+
+        }
+    }
+
+    let editForm = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            let plant_id = request.params.id;
+            let data = {id: plant_id};
+
+            const doneWithQuery = (result) => {
+
+                response.render('main/edit', {plant: result});
+
+            }
+
+            db.plants.findSingle(data, doneWithQuery);
+
+        }
+    }
 
   /**
    * ===========================================
@@ -226,7 +294,9 @@ module.exports = (db) => {
     receiveAddPlantRequestAndAdd,
     water,
     all,
-    view
+    view,
+    edit,
+    editForm
   };
 
 }

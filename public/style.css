@@ -170,7 +170,7 @@ a:hover plus {
 	border: 0px;
 	font-family: 'Prata', serif;
 	font-weight: 700;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 .card-wrapper {
@@ -215,7 +215,7 @@ a:hover plus {
 .box-title {
 	color: white;
 	font-family: 'Prata', serif;
-	padding-top: 10px;
+	padding-top: 14px;
 	margin: 2px;
 	text-align: center;
 }
@@ -243,7 +243,7 @@ a:hover plus {
 }
 
 h4 {
-	margin: 0;
+	padding-top: 2px;
 }
 
 .actions {
@@ -313,7 +313,8 @@ nav {
 	padding: 10px;
 	border-radius: 5px;
 	background-color: #2E8B57;
-		margin: 10px 15px;
+	margin: 12px 15px;
+	margin-bottom: 15px;
 	display: flex;
 	align-content: space-around;
 	flex-direction: column;
@@ -324,14 +325,19 @@ nav {
 	font-family: 'Chivo', sans-serif;
 	font-weight: 300;
 	text-align: center;
-	margin-bottom: 60px;
+	margin-top: 5px;
+	margin-bottom: 20px;
 	color: #f5f5dc;
+	}
+
+	h4 {
+		font-size: 30px;
 	}
 
 	.actions {
 	position: static;
 	bottom: 0;
-	margin: 20px auto;
+	margin: 20px 0 10px 0;
 	width: 270px;
 	display: flex;
 	justify-content: center;

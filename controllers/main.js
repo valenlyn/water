@@ -26,11 +26,13 @@ module.exports = (db) => {
 
                 let nickname = request.cookies.nickname;
                 let daysLeft = request.cookies.daysLeft;
+                let id = request.cookies.id;
                 response.clearCookie('daysLeft');
                 response.clearCookie('nickname');
+                response.clearCookie('id');
                 response.clearCookie('all');
 
-                response.render('main/water', {nickname: nickname, daysLeft: daysLeft, plants: result});
+                response.render('main/water', {id: id, nickname: nickname, daysLeft: daysLeft, plants: result});
 
             }
 
@@ -121,7 +123,7 @@ module.exports = (db) => {
     signUpRequest,
     logIn,
     authenticate,
-    logOut
+    logOut,
   };
 
 }

@@ -101,6 +101,7 @@ class Test extends React.Component {
                           <th scope="col" id="tb-name">Name</th>
                           <th scope="col" id="tb-due">Due</th>
                           <th scope="col" id="tb-instructions">Instructions</th>
+                          <th scope="col" id="tb-instructions">Water</th>
                         </tr>
                       </thead>
                       <tbody>

@@ -47,6 +47,8 @@ module.exports = (app, allModels) => {
     app.get('/plants', plants.all);
 
     app.get('/plants/:id', plants.view);
+    app.get('/plants/:id/edit', plants.editForm);
+    app.put('/plants/:id', plants.edit);
 
     app.post('/logout', main.logOut);
 
