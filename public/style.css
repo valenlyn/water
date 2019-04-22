@@ -159,6 +159,10 @@ a:hover plus {
 	font-size: 20px;
 }
 
+.water:hover {
+	background: #d15492;
+}
+
 .water-sm {
 	border-radius: 3px;
 	margin: 1px auto;
@@ -325,13 +329,23 @@ nav {
 	}
 
 	.actions {
-	position: absolute;
+	position: static;
 	bottom: 0;
 	margin: 20px auto;
-	width: 380px;
+	width: 270px;
 	display: flex;
 	justify-content: center;
 	}
+
+	.water {
+	border-radius: 3px;
+	margin: 1px auto;
+	background: #fde440;
+	border: 0px;
+	font-family: 'Prata', serif;
+	font-weight: 700;
+	font-size: 20px;
+}
 
 	nav {
 	display: flex;
