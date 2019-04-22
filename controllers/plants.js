@@ -145,7 +145,8 @@ module.exports = (db) => {
 
                 let date = result[0].next_water_date;
                 let today = new Date();
-                let daysLeft = Math.round((date - today)/(1000*60*60*24)) +1;
+                let daysLeft = Math.round((date - today)/(1000*60*60*24)) -1;
+                // let daysLeft = Math.round((date - today)/(1000*60*60*24));
 
                 response.cookie('nickname', result[0].nickname);
                 response.cookie('daysLeft', daysLeft);
@@ -200,19 +201,7 @@ module.exports = (db) => {
             let plant_id = request.params.id;
             let data = {id: plant_id};
 
-            console.log("data");
-            console.log("data");
-            console.log("data");
-            console.log("data");
-            console.log("data");
-            console.log(data);
-
             const doneWithQuery = (result) => {
-
-                console.log("resulttt");
-                console.log("resulttt");
-                console.log("resulttt");
-                console.log(result)
 
                 response.render('main/single', {plant: result});
 
