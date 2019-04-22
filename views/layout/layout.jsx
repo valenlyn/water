@@ -14,11 +14,21 @@ class Layout extends React.Component {
             </head>
             <body>
 
-                <div class="layout-wrap">
-                    {this.props.children}
+            <div class="row">
+                <div class="col-lg-2">
+                    <nav>
+                        <a href="#" class="nav-link">All Plants</a>
+                        <a href='#' class="nav-link">Settings</a>
+                    </nav>
                 </div>
 
+                <div class="col-lg-9">
 
+                    <div class="layout-wrap">
+                        {this.props.children}
+                    </div>
+                </div>
+            </div>
 
                 <script type="text/javascript" src="jquery.min.js"></script>
                 <script type="text/javascript" src="jquery.ui.widget.js"></script>

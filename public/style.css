@@ -21,7 +21,7 @@
 	color:#f5f5f5;
 	text-align:center;
 	text-decoration:none;
-	background: #ffbe42;
+	background: #d15492;
 	border: none;
 	font-size: 50px;
 	font-weight: bold;
@@ -32,7 +32,7 @@
 }
 
 .plus:hover {
-	background: #ffb529;
+	background: #af4479;
 }
 
 a:hover plus {
@@ -69,17 +69,13 @@ a:hover plus {
 	height: 70px;
 }
 
-.layout-wrap {
-	margin: 10px 0;
-}
-
 .box-wrapper {
 	display: flex;
 	align-items: center;
 }
 
 .box {
-	width: 300px;
+	width: 310px;
 	padding: 12px;
 	border-radius: 5px;
 	background-color: #2E8B57;
@@ -91,7 +87,7 @@ a:hover plus {
 }
 
 .box-danger {
-	width: 300px;
+	width: 310px;
 	padding: 15px;
 	border-radius: 5px;
 	background-color: #9f0c0c;
@@ -140,7 +136,7 @@ h4 {
 	position: absolute;
 	bottom: 0;
 	margin: 12px auto;
-	width: 276px;
+	width: 286px;
 	display: flex;
 	justify-content: center;
 }
@@ -149,7 +145,28 @@ h4 {
 	display: inline;
 }
 
-@media (orientation: portrait) {
+nav {
+	background-color: #d15492;
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	padding: 20px;
+	position: absolute;
+	font-family: 'Prata', serif;
+	font-size: 25px;
+	border-bottom-right-radius: 20px;
+}
+
+.nav-link {
+	padding: 20px;
+	color: black;
+}
+
+.nav-link:hover {
+	color: white;
+}
+
+@media (orientation: portrait) and (max-width: 1064px) {
 
 /*	.card-wrapper {
 		margin: 20px 15px;
@@ -188,5 +205,15 @@ h4 {
 	justify-content: center;
 	}
 
+	nav {
+	display: flex;
+	flex-direction: row;
+	padding: 20px;
+	margin-bottom: 3px;
+	width: 110%;
+	position: static;
+	font-family: 'Prata', serif;
+	border-radius: 0;
+	}
 
 }

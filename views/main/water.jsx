@@ -1,6 +1,6 @@
 var React = require("react");
 var Layout = require('../layout/layout.jsx');
-var Cards = require('../main/cards2.jsx');
+var Cards = require('../main/cards.jsx');
 var Notification = require('../main/notification.jsx');
 
 

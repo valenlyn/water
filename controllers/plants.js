@@ -133,6 +133,31 @@ module.exports = (db) => {
         }
     }
 
+    let view = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            let id = request.params.id;
+
+            const data = {
+                        id: id
+                        }
+
+            const doneWithQuery = (result) => {
+
+                response.send(result);
+
+            }
+
+        db.plants.view(data, doneWithQuery);
+        }
+
+    }
+
   /**
    * ===========================================
    * Export controller functions as a module
@@ -142,7 +167,8 @@ module.exports = (db) => {
     addPlant,
     receiveAddPlantRequest,
     receiveAddPlantRequestAndAdd,
-    water
+    water,
+    view
   };
 
 }

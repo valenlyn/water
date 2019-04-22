@@ -11,7 +11,7 @@ class New extends React.Component {
         <Layout>
             <div class="col-lg-6 col-xs-6">
                     <form method="POST" action="/new" enctype="multipart/form-data">
-                        <h1>Add a new plant</h1>
+                        <div class="date">Add a new plant</div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Species / genus</label>
                                 <input type="text" class="form-control" name="name" placeholder="Saguaro Cactus" autoFocus/>
@@ -31,7 +31,7 @@ class New extends React.Component {
 
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Plant img</label>
+                            <label for="exampleFormControlTextarea1">Plant's image</label>
                                 <input type='file' id="img" name="img" src="#" class="form-control"/>
                         </div>
 
