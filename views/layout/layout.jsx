@@ -10,25 +10,15 @@ class Layout extends React.Component {
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossOrigin="anonymous"/>
                 <link href="https://fonts.googleapis.com/css?family=Chivo:300,400|Prata|Sarala" rel="stylesheet"/>
                 <link rel="stylesheet" href="style.css"/>
+                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
             </head>
             <body>
 
-            <div class="row">
-                <div class="col-lg-2">
-                    <nav>
-                        <a href="/all" class="nav-link">All Plants</a>
-                        <a href='#' class="nav-link">Settings</a>
-                    </nav>
+                <div class="layout-wrap">
+                    {this.props.children}
                 </div>
 
-                <div class="col-lg-9">
-
-                    <div class="layout-wrap">
-                        {this.props.children}
-                    </div>
-                </div>
-            </div>
 
                 <script type="text/javascript" src="jquery.min.js"></script>
                 <script type="text/javascript" src="jquery.ui.widget.js"></script>

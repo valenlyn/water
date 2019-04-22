@@ -3,11 +3,6 @@ var React = require("react");
 class Notification extends React.Component {
   render() {
 
-    // Plant has been added
-    // Plant has been watered
-
-
-
     return (
 
             <div class="notification">

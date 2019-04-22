@@ -174,7 +174,6 @@ module.exports = (db) => {
             db.plants.view(data, doneWithQuery);
 
         }
-
     }
 
     let all = (request, response) => {
@@ -194,13 +193,20 @@ module.exports = (db) => {
 
             const doneWithQuery = (result) => {
 
+                let date = result[0].next_water_date;
+                let today = new Date();
+                let daysLeft = Math.round((date - today)/(1000*60*60*24)) +1;
+
+                response.cookie('nickname', result[0].nickname);
+                response.cookie('daysLeft', daysLeft);
+
                 let nickname = request.cookies.nickname;
                 let nextWaterDate = request.cookies.nextWaterDate;
-                response.clearCookie('nextWaterDate');
-                response.clearCookie('nickname');
+                // response.clearCookie('daysLeft');
+                // response.clearCookie('nickname');
 
                 response.cookie('all', '238409389dxc27938728dskc928');
-                response.render('main/all', {nickname: nickname, nextWaterDate: nextWaterDate, plants: result});
+                response.render('main/all', {nickname: nickname, daysLeft: daysLeft, plants: result});
 
             }
 

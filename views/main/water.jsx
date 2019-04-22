@@ -2,10 +2,15 @@ var React = require("react");
 var Layout = require('../layout/layout.jsx');
 var Cards = require('../main/cards.jsx');
 var Notification = require('../main/notification.jsx');
+var Nav = require('../layout/nav.jsx');
 
 
 class Water extends React.Component {
   render() {
+
+    // Nav
+
+    let nav = <Nav link1="#" text1="All Plants" link2="#" text2="Add new"/>
 
     // Get date
     const options = {month: 'long'};
@@ -13,20 +18,6 @@ class Water extends React.Component {
     let todayDisplay = new Date().getDate() + " "+ month;
 
     console.log(this.props.plants);
-
-
-    // Calculate how many days plant is overdue
-    // Do two maps to find plants that are > 1 day overdue (i.e. next_water_date = yesterday's date)
-    // let today = new Date();
-    // let difference = Math.round((today - this.props.plants.next_water_date)/(1000*60*60*24));
-    // let itemsElements = this.props.bar.map(fruit => {
-
-      // return fruit.colors.map(color => {
-      //           return <ListItem color={color} foo={fruit.name}/>
-      //       })
-      //                       });
-
-
 
     // Render plants
     let plants;
@@ -72,7 +63,7 @@ class Water extends React.Component {
 
     return (
         <Layout>
-
+            {nav}
             {message}
 
             <p class="date">{todayDisplay} </p>
@@ -81,11 +72,10 @@ class Water extends React.Component {
                 <div class="row d-flex justify-content-center">
                     {plants}
                 </div>
+
             </div>
 
-            <div class="wrapper">
-                <a href="/new"><button class="plus">+</button></a>
-            </div>
+
 
 
 

@@ -32,6 +32,7 @@ module.exports = (db) => {
                 response.clearCookie('nickname');
 
                 response.render('main/water', {nickname: nickname, daysLeft: daysLeft, plants: result});
+                // response.send(result);
 
             }
 
@@ -95,9 +96,7 @@ module.exports = (db) => {
                 let secretCookie = result.user.id + "V" + sha256(SALT + data.username);
                 response.cookie('loggedin', secretCookie);
 
-
-
-                response.render('main/water', {plants: result.plants});
+                response.redirect('/');
 
             }
         }
