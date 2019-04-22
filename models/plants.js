@@ -159,24 +159,6 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    let view = (data, callback) => {
-
-        let query = `SELECT * FROM plants WHERE id=${data.id}`;
-
-        dbPoolInstance.query(query, (error, queryResult) => {
-
-            if (error) {
-
-                callback(error, null);
-
-            } else {
-
-                callback(queryResult.rows[0]);
-
-            }
-        });
-    }
-
     let showAll = (data, callback) => {
 
 
@@ -197,13 +179,31 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    let findSingle = (data, callback) => {
+
+        let query = `SELECT * FROM plants WHERE id=${data.id}`;
+
+        dbPoolInstance.query(query, (error, queryResult) => {
+
+            if (error) {
+
+                callback(error);
+
+            } else {
+
+                callback(queryResult.rows[0]);
+
+            }
+        })
+    }
+
   return {
 
     waterPlantsToday,
     addPlant,
     wateredPlant,
-    view,
-    showAll
+    showAll,
+    findSingle
 
   };
 };

@@ -1,8 +1,13 @@
 var React = require("react");
 var Layout = require('../layout/layout.jsx');
+var Nav = require('../layout/nav.jsx');
 
 class LogIn extends React.Component {
   render() {
+
+    // Nav
+    let nav = <Nav link1="/" text1="Home"/>
+
 
     let emailStatus = "";
     let passwordStatus = "";
@@ -25,8 +30,12 @@ class LogIn extends React.Component {
 
     return (
       <Layout>
+
+        {nav}
+
             <div class="row d-flex m-5 justify-content-center">
                 <div class="col-3">
+                    <div class="date">Log in</div>
                     <form method="POST" action="/">
                         {message}
                         <div class="form-group">
@@ -35,8 +44,7 @@ class LogIn extends React.Component {
                         <div class="form-group">
                             <input type="password" name="password" class={passwordStatus} id="exampleInputPassword1" placeholder="Password"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Log in</button>
-                        <span class="login">or <a href="/">Sign Up</a></span>
+                        <center><button type="submit" class="form-btn-2">Log in</button></center>
                     </form>
                 </div>
             </div>

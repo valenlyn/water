@@ -44,11 +44,12 @@ module.exports = (app, allModels) => {
 
     app.post('/watered/:id', plants.water);
 
-    app.get('/plants/:id', plants.view);
-    // app.post('plants/:id/edit');
+    app.get('/plants', plants.all);
 
-    app.get('/all', plants.all);
-    // app.get('/plants',);
+    app.get('/plants/:id', plants.view);
+
+    app.post('/logout', main.logOut);
+
 
 
 };

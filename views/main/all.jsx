@@ -1,10 +1,15 @@
 var React = require('react');
 var Layout = require('../layout/layout.jsx');
 var Notification = require('../main/notification.jsx');
+var Nav = require('../layout/nav.jsx');
 
 class Test extends React.Component {
 
   render() {
+
+    // Nav
+    let nav = <Nav link1="/" text1="Home" link2="/new" text2="Add New"/>
+
 
     let plants;
 
@@ -17,24 +22,24 @@ class Test extends React.Component {
         var message = "";
 
         // If plant was just watered, plant's details go in here:
-        if (this.props.nickname) {
+        // if (this.props.nickname) {
 
-            let daysLeftDisplay = this.props.daysLeft;
+        //     let daysLeftDisplay = this.props.daysLeft;
 
-            if (daysLeftDisplay === 1) {
-                daysLeftDisplay = "tomorrow";
-            } else if (daysLeftDisplay === 7) {
-                daysLeftDisplay = "in a week";
-            } else if (daysLeftDisplay === 14) {
-                 daysLeftDisplay = "in 2 weeks"
-            } else if (daysLeftDisplay > 1) {
-                daysLeftDisplay = "in " + daysLeftDisplay + " days";
-            }
+        //     if (daysLeftDisplay === 1) {
+        //         daysLeftDisplay = "tomorrow";
+        //     } else if (daysLeftDisplay === 7) {
+        //         daysLeftDisplay = "in a week";
+        //     } else if (daysLeftDisplay === 14) {
+        //          daysLeftDisplay = "in 2 weeks"
+        //     } else if (daysLeftDisplay > 1) {
+        //         daysLeftDisplay = "in " + daysLeftDisplay + " days";
+        //     }
 
-            message = <Notification name={this.props.nickname} daysLeft={daysLeftDisplay}/>
-        } else {
-            message = <div class="notification"></div>;
-        }
+        //     message = <Notification name={this.props.nickname} daysLeft={daysLeftDisplay}/>
+        // } else {
+        //     message = <div class="notification"></div>;
+        // }
 
         plants = this.props.plants.map(plant => {
 
@@ -94,7 +99,7 @@ class Test extends React.Component {
 
                           <td>
                             <form method="POST">
-                                 <button type="submit" formaction={plantWaterLink} class="water">mark as watered</button>
+                                 <button type="submit" formaction={plantWaterLink} class="water-sm">mark as watered</button>
                             </form>
                         </td>
                     </tr>
@@ -104,11 +109,13 @@ class Test extends React.Component {
 
     return (
         <Layout>
+            {nav}
             {message}
+            <div class="table-wrap">
                 <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th scope="col" id="tb-species">Species / Genus</th>
+                          <th scope="col" id="tb-species">Species / genus</th>
                           <th scope="col" id="tb-name">Name</th>
                           <th scope="col" id="tb-due">Due</th>
                           <th scope="col" id="tb-instructions">Instructions</th>
@@ -118,9 +125,8 @@ class Test extends React.Component {
                             {plants}
                       </tbody>
                 </table>
-            <div class="wrapper">
-                <a href="/new"><button class="plus">+</button></a>
             </div>
+
         </Layout>
     );
   }

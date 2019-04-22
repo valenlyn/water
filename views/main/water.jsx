@@ -9,8 +9,7 @@ class Water extends React.Component {
   render() {
 
     // Nav
-
-    let nav = <Nav link1="#" text1="All Plants" link2="#" text2="Add new"/>
+    let nav = <Nav link1="/plants" text1="All Plants" link2="/new" text2="Add New"/>
 
     // Get date
     const options = {month: 'long'};
@@ -25,6 +24,10 @@ class Water extends React.Component {
     if (this.props.plants == "") {
 
         plants = "All your plants are hydrated :-)"
+
+    } else if (this.props.new) {
+
+        plants = "You have no plants. <a href="/new">Add your first one.</a>";
 
     } else {
 
@@ -66,7 +69,7 @@ class Water extends React.Component {
             {nav}
             {message}
 
-            <p class="date">{todayDisplay} </p>
+            <p class="date">{todayDisplay}</p>
 
             <div class="card-wrapper">
                 <div class="row d-flex justify-content-center">

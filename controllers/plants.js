@@ -42,8 +42,20 @@ module.exports = (db) => {
             console.log(request.file);
 
             let url = "";
+            var img;
 
-            cloudinary.uploader.upload(request.file.path, function(error, result) {
+            // If user doesn't upload an image, use this default image
+
+            if (!request.file) {
+
+                img = "https://res.cloudinary.com/water123/image/upload/v1555950989/awwner6igxp6irvwekto.png";
+
+            } else {
+
+                img = request.file.path;
+            }
+
+            cloudinary.uploader.upload(img, function(error, result) {
                 console.log(result, error)
 
                 url = result.url;
@@ -103,8 +115,9 @@ module.exports = (db) => {
                     };
 
                 const doneWithQuery = (result) => {
-                    console.log(result);
-                    response.render('main/newplant');
+
+                    response.redirect('/new');
+
                 }
 
                 db.plants.addPlant(data, doneWithQuery);
@@ -140,38 +153,11 @@ module.exports = (db) => {
                 if (!request.cookies.all) {
                     response.redirect('/');
                 } else {
-                    response.redirect('/all');
+                    response.redirect('/plants');
                 }
-
-
             }
 
             db.plants.wateredPlant(data, doneWithQuery);
-
-        }
-    }
-
-    let view = (request, response) => {
-
-        if (!request.cookies.loggedin) {
-
-            response.render('main/main');
-
-        } else {
-
-            let id = request.params.id;
-
-            const data = {
-                        id: id
-                        };
-
-            const doneWithQuery = (result) => {
-
-                response.render('main/individual', {plant: result});
-
-            }
-
-            db.plants.view(data, doneWithQuery);
 
         }
     }
@@ -193,20 +179,8 @@ module.exports = (db) => {
 
             const doneWithQuery = (result) => {
 
-                let date = result[0].next_water_date;
-                let today = new Date();
-                let daysLeft = Math.round((date - today)/(1000*60*60*24)) +1;
-
-                response.cookie('nickname', result[0].nickname);
-                response.cookie('daysLeft', daysLeft);
-
-                let nickname = request.cookies.nickname;
-                let nextWaterDate = request.cookies.nextWaterDate;
-                // response.clearCookie('daysLeft');
-                // response.clearCookie('nickname');
-
-                response.cookie('all', '238409389dxc27938728dskc928');
-                response.render('main/all', {nickname: nickname, daysLeft: daysLeft, plants: result});
+                response.cookie('all', sha256("hi"));
+                response.render('main/all', {plants: result});
 
             }
 
@@ -214,6 +188,42 @@ module.exports = (db) => {
 
         }
     }
+
+    let view = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            let plant_id = request.params.id;
+            let data = {id: plant_id};
+
+            console.log("data");
+            console.log("data");
+            console.log("data");
+            console.log("data");
+            console.log("data");
+            console.log(data);
+
+            const doneWithQuery = (result) => {
+
+                console.log("resulttt");
+                console.log("resulttt");
+                console.log("resulttt");
+                console.log(result)
+
+                response.render('main/single', {plant: result});
+
+            }
+
+                db.plants.findSingle(data, doneWithQuery);
+
+            }
+    }
+
+
 
 
   /**
@@ -226,8 +236,8 @@ module.exports = (db) => {
     receiveAddPlantRequest,
     receiveAddPlantRequestAndAdd,
     water,
-    view,
-    all
+    all,
+    view
   };
 
 }

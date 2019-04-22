@@ -1,10 +1,68 @@
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
+}
+
+form {
+	margin: 10px;
+}
+
+.landing {
+	background-image: url("https://res.cloudinary.com/water123/image/upload/c_crop,h_3144,o_65,w_3840/v1555933239/chair-clothes-flora-1390062_lpgqxp.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 1000px;
+}
+
+.landing-text {
+	font-size: 60px;
+	padding: 45px 97px;
+	text-align: center;
+	font-family: 'Prata', serif;
+	color: #000000;
+	font-weight: 700;
+}
+
+.form-text {
+	font-family: 'Chivo', sans-serif;
+	color: #2E8B57;
+}
+
+.form-text-2 {
+	font-family: 'Chivo', sans-serif;
+}
+
+.form-btn {
+	background: #d15492;
+	padding: 15px 22px;
+	margin-right: 10px;
+	font-size: 20px;
+	font-family: 'Prata', serif;
+	color: #FFFFFF;
+	border: 0;
+}
+
+.form-btn-2 {
+	background: #2E8B57;
+	padding: 15px 22px;
+	font-size: 20px;
+	font-family: 'Prata', serif;
+	color: #FFFFFF;
+	border: 0;
+}
+
+.form-box {
+	display: block;
+	width: 100%;
+	padding: 7px;
 }
 
 .wrap {
 	margin: 200px;
 	/*background-color: pink;*/
+}
+
+.table-wrap {
+	margin: 10px 70px;
 }
 
 .form-container {
@@ -15,6 +73,44 @@ body{
 
 .login {
 	padding-left: 10px;
+	background-color: #2E8B57;
+	display: block;
+	width: inherit;
+	font-family: 'Prata', serif;
+	text-align: center;
+	font-size: 20px;
+	color: #000000;
+	text-decoration: none;
+	padding: 10px;
+	border: none;
+}
+
+a:hover .login {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.login:hover {
+	background-color: #000000;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.sign-up {
+	background: #2E8B57;
+	padding: 10px;
+}
+
+.sign-up-btn {
+	background-color: #000000;
+	width: 100%;
+	font-family: 'Prata', serif;
+	text-align: center;
+	font-size: 20px;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding: 15px;
+	border: none;
 }
 
 .plus {
@@ -55,12 +151,22 @@ a:hover plus {
 
 .water {
 	border-radius: 3px;
-	margin: 3px auto;
+	margin: 1px auto;
 	background: #fde440;
 	border: 0px;
 	font-family: 'Prata', serif;
 	font-weight: 700;
 	font-size: 20px;
+}
+
+.water-sm {
+	border-radius: 3px;
+	margin: 1px auto;
+	background: #fde440;
+	border: 0px;
+	font-family: 'Prata', serif;
+	font-weight: 700;
+	font-size: 12px;
 }
 
 .card-wrapper {
@@ -128,7 +234,7 @@ a:hover plus {
 	font-family: 'Chivo', sans-serif;
 	font-weight: 300;
 	text-align: center;
-	margin-bottom: 49px;
+	margin-bottom: 56px;
 	color: #f5f5dc;
 }
 
@@ -151,19 +257,26 @@ h4 {
 
 nav {
 	background-color: #d15492;
-	display: flex;
-	flex-direction: column;
-	width: 200px;
-	padding: 20px;
-	position: absolute;
+	padding: 15px;
 	font-family: 'Prata', serif;
-	font-size: 25px;
-	border-bottom-right-radius: 20px;
+	font-size: 22px;
+	display: flex;
+	flex-direction: row;
 }
 
-.nav-link {
-	padding: 20px;
+.nav-link, .nav-link-last {
+	padding: 10px 15px;
 	color: black;
+}
+
+.nav-link-last {
+	position: absolute;
+	right: 0;
+}
+
+.nav-link-last:hover {
+	color: white;
+	text-decoration: none;
 }
 
 .nav-link:hover {
@@ -183,6 +296,13 @@ nav {
 	body {
 		background-color: pink;
 	}*/
+
+	.date {
+	font-family: 'Prata', serif;
+	text-align: center;
+	font-size: 50px;
+	margin-top: 10px;
+	}
 
 	.box {
 	width: 400px;

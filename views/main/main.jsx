@@ -1,37 +1,47 @@
 var React = require("react");
 var Layout = require('../layout/layout.jsx');
+var Nav = require('../layout/nav.jsx');
 
 class SignUp extends React.Component {
   render() {
 
 
-    // console.log(this.props.types);
-
-
     return (
       <Layout>
-            <div class="row d-flex m-5 justify-content-center">
-                <div class="col-3">
-                    <form method="POST" action="/signup">
+        <div class="landing">
+            <div class="landing-text">Water your plants <br/>at the right time</div>
+                <div class="row d-flex justify-content-center">
 
-                        <div class="form-group">
-                            <input type="text" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email"/>
+                    <div class="col-lg-4 col-sm-9 col-md-6">
+
+
+                        <div class="sign-up">
+                            <form method="POST" action="/signup">
+
+
+                                    <input type="text" name="email" class="form-box form-text-2" id="exampleInputPassword1" placeholder="Email" autoFocus/>
+
+
+
+                                    <input type="text" name="name" class="form-box  form-text-2" id="exampleInputPassword1" placeholder="Name"/>
+
+
+                                    <input type="password" name="password" class="form-box  form-text-2" id="exampleInputPassword1" placeholder="Password"/>
+                                    <br/>
+
+                                <button type="submit" class="sign-up-btn">Sign Up</button>
+
+                                </form>
+
                         </div>
+                        <br/>
+                            <a class="login" href="/login"><button class="login">Log In</button></a>
 
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="Name"/>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Sign up</button>
-                        <span class="login">or <a href="/login">Log in</a></span>
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </Layout>
+
+        </div>
+    </Layout>
     );
   }
 }

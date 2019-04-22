@@ -24,15 +24,13 @@ module.exports = (db) => {
 
             let getWaterPlantsToday = (result) => {
 
-                response.clearCookie('all');
-
                 let nickname = request.cookies.nickname;
                 let daysLeft = request.cookies.daysLeft;
                 response.clearCookie('daysLeft');
                 response.clearCookie('nickname');
+                response.clearCookie('all');
 
                 response.render('main/water', {nickname: nickname, daysLeft: daysLeft, plants: result});
-                // response.send(result);
 
             }
 
@@ -105,6 +103,13 @@ module.exports = (db) => {
 
     };
 
+    let logOut = (request, response) => {
+
+        response.clearCookie('loggedin');
+        response.render('main/main');
+
+    }
+
 
   /**
    * ===========================================
@@ -116,7 +121,7 @@ module.exports = (db) => {
     signUpRequest,
     logIn,
     authenticate,
-
+    logOut
   };
 
 }

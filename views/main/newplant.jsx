@@ -1,61 +1,69 @@
 var React = require('react');
 var Layout = require('../layout/layout.jsx');
+var Nav = require('../layout/nav.jsx');
 
 class New extends React.Component {
 
   render() {
 
+    // Nav
+    let nav = <Nav link1="/" text1="Home"/>
+
 
     return (
         <Layout>
-            <div class="col-lg-6 col-xs-6">
+            {nav}
+            <div class="col-lg-12 col-xs-12 d-flex justify-content-center">
                     <form method="POST" action="/new" enctype="multipart/form-data">
-                        <div class="date">Add a new plant</div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Species / genus</label>
-                                <input type="text" class="form-control" name="name" placeholder="Saguaro Cactus" autoFocus/>
+
+                        <div class="date mt-2 mb-2">Add a new plant</div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="form-text" for="exampleFormControlTextarea1">Name</label>
+                            <input type="text" name="nickname" class="form-control form-text-2 " id="exampleFormControlTextarea1" placeholder="Spike Jonze" autoFocus/>
                         </div>
 
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Nickname</label>
-                        <input type="text" name="nickname" class="form-control" id="exampleFormControlTextarea1" placeholder="Spike Jonze"/>
+                        <div class="form-group col-md-6">
+                            <label class="form-text" for="exampleFormControlInput1">Species / genus</label>
+                                <input type="text" class="form-control form-text-2" name="name" placeholder="Saguaro Cactus"/>
+                        </div>
+
                     </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Select the date you want to water your plant next</label>
-                            <div class='input-group date' id='datetimepicker3'>
+                            <label class="form-text" for="exampleFormControlTextarea1">Date you want to water your plant next</label>
+                            <div class='input-group form-text-2 ' id='datetimepicker3'>
                                 <input type='date' name="next_water_date" class="form-control"/>
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Plant's image</label>
-                                <input type='file' id="img" name="img" src="#" class="form-control"/>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">How often does your plant require watering? (In days)</label>
-                                <input type="number" class="form-control" name="frequency" placeholder="10"/>
+                            <label class="form-text" for="exampleFormControlInput1">How often does your plant require watering? (In days)</label>
+                                <input type="number" class="form-control form-text-2" name="frequency" placeholder="10"/>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Add some instructions on how to care for your plant</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="instructions" placeholder="Mist lightly until soil is damp"></textarea>
+                            <label class="form-text" for="exampleFormControlTextarea1">Add some instructions on how to care for your plant</label>
+                            <textarea class="form-control form-text-2" id="exampleFormControlTextarea1" rows="2" name="instructions" placeholder="Water all the way through; soil at the bottom of the pot should be damp"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Choose how you'd like to be reminded to water this plant</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="reminder_type">
+                            <label class="form-text" for="exampleFormControlSelect1">How would you like to be reminded to care for this plant?</label>
+                            <select class="form-control form-text-2" id="exampleFormControlSelect1" name="reminder_type">
                                 <option value="email">Email</option>
                                 <option value="cal">Google calendar event</option>
-                                <option>None</option>
+                                <option>No thanks!</option>
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                        <button type="submit" action="/newAndAnother" class="btn btn-primary mb-2 ml-2">Submit and add another</button>
+                        <div class="form-group">
+                            <label class="form-text" for="exampleFormControlTextarea1">Plant's image</label>
+                                <input type='file' id="img" name="img" src="#" class="form-control form-text-2"/>
+                        </div>
+
+                        <button type="submit" class="form-btn">Submit</button>
                     </form>
 
 
