@@ -52,6 +52,7 @@ module.exports = (app, allModels) => {
 
     app.post('/logout', main.logOut);
 
-
+    app.get('/plants/:id/delete', plants.deleteConfirmation);
+    app.delete('/plants/:id', plants.deletePlant);
 
 };

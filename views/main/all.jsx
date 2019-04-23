@@ -92,7 +92,7 @@ class Test extends React.Component {
     return (
         <Layout>
             {nav}
-            {message}
+
             <div class="table-wrap">
                 <table class="table table-hover">
                       <thead>

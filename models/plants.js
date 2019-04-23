@@ -211,6 +211,24 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    let deletePlant = (data, callback) => {
+
+        let query = `DELETE FROM plants WHERE id=${data.id}`;
+
+        dbPoolInstance.query(query, (error, queryResult) => {
+
+            if (error) {
+
+                callback(error);
+
+            } else {
+
+                callback(queryResult.rows[0]);
+
+            }
+        })
+    }
+
   return {
 
     waterPlantsToday,
@@ -218,7 +236,8 @@ module.exports = (dbPoolInstance) => {
     wateredPlant,
     showAll,
     findSingle,
-    editPlant
+    editPlant,
+    deletePlant
 
   };
 };

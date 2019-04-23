@@ -283,6 +283,51 @@ module.exports = (db) => {
         }
     }
 
+    let deleteConfirmation = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            let plant_id = request.params.id;
+            let data = {id: plant_id};
+
+            const doneWithQuery = (result) => {
+
+                response.render('main/delete', {plant: result});
+
+            }
+
+                db.plants.findSingle(data, doneWithQuery);
+
+            }
+
+    }
+
+    let deletePlant = (request, response) => {
+
+        if (!request.cookies.loggedin) {
+
+            response.render('main/main');
+
+        } else {
+
+            let plant_id = request.params.id;
+            let data = {id: plant_id};
+
+            const doneWithQuery = (result) => {
+
+                response.redirect('/');
+
+            }
+
+                db.plants.deletePlant(data, doneWithQuery);
+
+            }
+    }
+
   /**
    * ===========================================
    * Export controller functions as a module
@@ -296,7 +341,9 @@ module.exports = (db) => {
     all,
     view,
     edit,
-    editForm
+    editForm,
+    deleteConfirmation,
+    deletePlant
   };
 
 }
