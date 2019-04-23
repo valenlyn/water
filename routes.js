@@ -50,7 +50,7 @@ module.exports = (app, allModels) => {
     app.get('/plants/:id/edit', plants.editForm);
     app.put('/plants/:id', plants.edit);
 
-    app.post('/logout', main.logOut);
+    app.get('/logout', main.loggingOut);
 
     app.get('/plants/:id/delete', plants.deleteConfirmation);
     app.delete('/plants/:id', plants.deletePlant);

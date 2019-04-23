@@ -8,7 +8,7 @@ class Test extends React.Component {
   render() {
 
     // Nav
-    let nav = <Nav link1="/" text1="Home" link2="/new" text2="Add New"/>
+    let nav = <Nav link1="/" text1="Home" link2="/new" text2="Add New" link3="/logout" text3="Log Out"/>
 
 
     let plants;

@@ -19,12 +19,12 @@ class LogIn extends React.Component {
         message = "Password is incorrect";
 
     } else if (this.props.message === "Email not found") {
-        emailStatus = "form-control is-invalid";
-        passwordStatus = "form-control";
+        emailStatus = "form-control is-invalid form-text-2";
+        passwordStatus = "form-control form-text-2";
         message = "Email not found";
     } else {
-        emailStatus = "form-control";
-        passwordStatus = "form-control";
+        emailStatus = "form-control form-text-2";
+        passwordStatus = "form-control form-text-2";
         message = "";
     }
 

@@ -9,7 +9,7 @@ class Water extends React.Component {
   render() {
 
     // Nav
-    let nav = <Nav link1="/plants" text1="All Plants" link2="/new" text2="Add New"/>
+    let nav = <Nav link1="/plants" text1="All Plants" link2="/new" text2="Add New" link3="/logout" text3="Log Out"/>
 
     // Get date
     const options = {month: 'long'};

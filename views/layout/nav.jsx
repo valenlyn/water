@@ -8,7 +8,7 @@ class Nav extends React.Component {
         <nav>
             <a class="nav-link" href={this.props.link1}>{this.props.text1}</a>
             <a class="nav-link" href={this.props.link2}>{this.props.text2}</a>
-
+            <a class="nav-link-last" href={this.props.link3}>{this.props.text3}</a>
         </nav>
     );
   }

@@ -252,7 +252,8 @@ module.exports = (db) => {
 
             const doneWithQuery = (result) => {
 
-                response.render('main/single', {plant: result});
+                // response.render('main/single', {plant: result});
+                response.redirect('/');
 
             }
 

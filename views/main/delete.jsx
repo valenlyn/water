@@ -8,7 +8,7 @@ class Delete extends React.Component {
 
 
     // Nav
-    let nav = <Nav link1="/" text1="Home" link2="/new" text2="Add New"/>;
+    let nav = <Nav link1="/" text1="Home" link2="/new" text2="Add New" link3="/logout" text3="Log Out"/>
 
     let deleteValue = `/plants/${this.props.plant.id}?_method=DELETE`
 

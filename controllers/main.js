@@ -105,11 +105,17 @@ module.exports = (db) => {
 
     };
 
-    let logOut = (request, response) => {
+    // let logOut = (request, response) => {
+
+    //     response.clearCookie('loggedin');
+    //     response.render('main/main');
+
+    // }
+
+    let loggingOut = (request, response) => {
 
         response.clearCookie('loggedin');
         response.render('main/main');
-
     }
 
 
@@ -123,7 +129,7 @@ module.exports = (db) => {
     signUpRequest,
     logIn,
     authenticate,
-    logOut,
+    loggingOut
   };
 
 }

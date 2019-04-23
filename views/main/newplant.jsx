@@ -7,7 +7,7 @@ class New extends React.Component {
   render() {
 
     // Nav
-    let nav = <Nav link1="/" text1="Home"/>
+    let nav = <Nav link1="/" text1="Home" link3="/logout" text3="Log Out"/>
 
 
     return (

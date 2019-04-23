@@ -8,7 +8,7 @@ class Edit extends React.Component {
     var reminder;
 
     // Nav
-    let nav = <Nav link1="/" text1="Home"/>;
+    let nav = <Nav link1="/" text1="Home" link3="/logout" text3="Log Out"/>
     let actionLink = `/plants/${this.props.plant.id}?_method=PUT`
 
     // if (this.props.plant.reminder_type === 'email') {
@@ -25,7 +25,7 @@ class Edit extends React.Component {
         <Layout>
             {nav}
             <div class="col-lg-12 col-xs-12 d-flex justify-content-center">
-                    <form method="POST" action={actionLink} enctype="multipart/form-data">
+                    <form method="POST" action={actionLink}>
 
                         <div class="date mt-2 mb-2">Edit {this.props.plant.nickname}</div>
 

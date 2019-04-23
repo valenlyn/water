@@ -8,7 +8,7 @@ class Single extends React.Component {
 
 
     // Nav
-    let nav = <Nav link1="/" text1="Home" link2="/new" text2="Add New"/>
+    let nav = <Nav link1="/" text1="Home" link2="/new" text2="Add New" link3="/logout" text3="Log Out"/>
 
     let editPage = `/plants/${this.props.plant.id}/edit`;
     let deletePage = `/plants/${this.props.plant.id}/delete`;
