@@ -92,8 +92,10 @@ module.exports = (db) => {
             } else {
 
                 // console.log("this is the user id "+ result.user.id);
+                console.log(result);
 
                 let secretCookie = result.user.id + "V" + sha256(SALT + data.username);
+
                 response.cookie('loggedin', secretCookie);
 
                 response.redirect('/');

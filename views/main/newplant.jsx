@@ -60,6 +60,7 @@ class New extends React.Component {
 
                         <div class="form-group">
                             <label class="form-text" for="exampleFormControlTextarea1">Plant's image</label>
+                            <img src=""/>
                                 <input type='file' id="img" name="img" src="#" class="form-control form-text-2"/>
                         </div>
 
