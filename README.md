@@ -25,7 +25,7 @@ As a owner of many cacti and succulents, I want an app that generates a new cust
 * **Stores records of plants users own** – Names, species/genus, a photograph, instructions on how to care for the plant, how often the plant requires watering.
 * **Homepage displays a date and the plants that require watering for the day** – helps users to quickly identify which plants need watering *today*. Instructions on how to water / care for the plant is also displayed here, making it convenient for the user to get to their task without having to reference it elsewhere
 * **Sends email reminder on the day the plant requires watering**
-* **Creates a Google calendar event for the day thr plant requires watering** (this is created in advance as opposed to the email feature—i.e. suppose today is the 1st of the month and you set a reminder for 10th. The app creates a calendar event immediately, but the event's date is set to the 10th)
+* **Creates a Google calendar event for the day a plant requires watering** (this is created in advance as opposed to the email feature—i.e. suppose today is the 1st of the month and you set a reminder for 10th. The app creates a calendar event immediately, but the event's date is set to the 10th)
 * **All Plants page provides an overview of all plants**, their information, and how many days until they're due for watering. Plants that are "overdue" are highlighted red and bumped to the top of the list, to help users get right on their tasks
 * **Edit plant information**
 * **Delete plant**
