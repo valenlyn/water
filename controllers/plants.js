@@ -145,8 +145,8 @@ module.exports = (db) => {
 
                 let date = result[0].next_water_date;
                 let today = new Date();
-                let daysLeft = Math.round((date - today)/(1000*60*60*24)) -1;
-                // let daysLeft = Math.round((date - today)/(1000*60*60*24));
+                // let daysLeft = Math.round((date - today)/(1000*60*60*24)) +1;
+                let daysLeft = Math.round((date - today)/(1000*60*60*24));
 
                 response.cookie('nickname', result[0].nickname);
                 response.cookie('daysLeft', daysLeft);
