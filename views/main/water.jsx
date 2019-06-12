@@ -16,18 +16,16 @@ class Water extends React.Component {
     let month = new Date().toLocaleDateString("en-GB", options);
     let todayDisplay = new Date().getDate() + " "+ month;
 
-    console.log(this.props.plants);
-
     // Render plants
     let plants;
 
-    if (this.props.plants == "") {
+    if (!this.props.userHasPlants[0].exists) {
+
+        plants = <span> You have no plants. <a href="/new">Add your first one.</a> </span>;
+
+    } else if (this.props.plants == "") {
 
         plants = "All your plants are hydrated :-)"
-
-    } else if (this.props.new) {
-
-        plants = "You have no plants. <a href="/new">Add your first one.</a>";
 
     } else {
 

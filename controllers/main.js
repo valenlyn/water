@@ -32,7 +32,7 @@ module.exports = (db) => {
                 response.clearCookie('id');
                 response.clearCookie('all');
 
-                response.render('main/water', {id: id, nickname: nickname, daysLeft: daysLeft, plants: result});
+                response.render('main/water', {id: id, nickname: nickname, daysLeft: daysLeft, plants: result.plants, userHasPlants: result.new});
 
             }
 
@@ -52,9 +52,11 @@ module.exports = (db) => {
 
         console.log(data);
 
-        const doneWithQuery = (data) => {
-            console.log(data);
-            response.redirect('/login');
+        const doneWithQuery = (result) => {
+
+            let secretCookie = result[0].id + "V" + sha256(SALT + result[0].name);
+            response.cookie('loggedin', secretCookie);
+            response.redirect('/');
         }
 
       db.owners.signUp(data, doneWithQuery);

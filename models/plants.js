@@ -30,6 +30,9 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+
+
+
     let waterPlantsToday = (data, callback) => {
 
         let date = new Date().toISOString().split('T')[0];
@@ -45,12 +48,30 @@ module.exports = (dbPoolInstance) => {
 
             } else {
 
-                callback(queryResult.rows);
-                // console.log(queryResult.rows)
+
+                let queryTwo = `select exists (select * from plants where owner_id=${data.owner_id})`;
+
+                dbPoolInstance.query(queryTwo, (error, queryResultTwo) => {
+
+                    if (error) {
+
+                        callback(error);
+
+                    } else {
+
+                        callback({plants: queryResult.rows, new: queryResultTwo.rows});
+
+                    }
+                })
 
             }
         });
     }
+
+
+
+
+
 
     let addPlant = (data, callback) => {
 
@@ -92,6 +113,11 @@ module.exports = (dbPoolInstance) => {
             }
         });
     }
+
+
+
+
+
 
     let wateredPlant = (data, callback) => {
 
@@ -161,9 +187,12 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+
+
+
+
+
     let showAll = (data, callback) => {
-
-
 
         let query = `SELECT * FROM plants WHERE owner_id=${data.owner_id} ORDER BY next_water_date ASC NULLS LAST`;
 
@@ -199,6 +228,11 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+
+
+
+
+
     let editPlant = (data, callback) => {
 
         let query = `UPDATE plants SET name='${data.name}', nickname='${data.nickname}', next_water_date='${data.next_water_date}', frequency=${data.frequency}, reminder_type='${data.reminder_type}', instructions='${data.instructions}' WHERE id=${data.id} RETURNING *`;
@@ -212,6 +246,11 @@ module.exports = (dbPoolInstance) => {
             }
         })
     }
+
+
+
+
+
 
     let deletePlant = (data, callback) => {
 

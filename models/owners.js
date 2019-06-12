@@ -9,7 +9,7 @@ module.exports = (dbPoolInstance) => {
 
     let signUp = (data, callback) => {
 
-        let query = `INSERT INTO owners (email, name, password) VALUES ('${data.email}', '${data.name}', '${data.password}')`;
+        let query = `INSERT INTO owners (email, name, password) VALUES ('${data.email}', '${data.name}', '${data.password}') RETURNING *`;
 
         dbPoolInstance.query(query, (error, queryResult) => {
           if( error ){
@@ -20,8 +20,7 @@ module.exports = (dbPoolInstance) => {
           }else{
 
             // invoke callback function with results after query has executed
-
-              callback(null, queryResult.rows);
+            callback(queryResult.rows);
 
           }
         });

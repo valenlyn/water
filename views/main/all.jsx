@@ -15,7 +15,7 @@ class Test extends React.Component {
 
     if (this.props.plants == "") {
 
-        plants = "You have no plants. :-) Add a new one.";
+        plants = <div> You have no plants. :-( <a href="/new">Add your first one.</a></div>;
 
     } else {
 
