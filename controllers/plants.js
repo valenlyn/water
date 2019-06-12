@@ -243,13 +243,6 @@ module.exports = (db) => {
                     instructions: request.body.instructions
                 };
 
-                // console.log(data);
-
-                // console.log(data);
-                // console.log(data);
-                // console.log(data);
-                // console.log(data);
-
             const doneWithQuery = (result) => {
 
                 // response.render('main/single', {plant: result});

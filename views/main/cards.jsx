@@ -17,9 +17,7 @@ class Cards extends React.Component {
                 <div class="actions">
                     <form method="POST">
                         <button type="submit" formaction={formAction} class="water">mark as watered</button>
-
                     </form>
-
                 </div>
 
             </div>

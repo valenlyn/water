@@ -78,12 +78,6 @@ class Water extends React.Component {
                 </div>
 
             </div>
-
-
-
-
-
-
         </Layout>
     );
   }
