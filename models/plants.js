@@ -13,8 +13,8 @@ module.exports = (dbPoolInstance) => {
         let date = values.next_water_date;
 
         // Adding at extra day to this date because ISO string ignores time, and we need the date formatted into ISO String for Airtable to parse
-        date.setDate(date.getDate() + 1);
-        // date.setDate(date.getDate());
+        // date.setDate(date.getDate() + 1);
+        date.setDate(date.getDate());
 
 
         base('Table 1').create({
