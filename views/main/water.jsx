@@ -45,7 +45,7 @@ class Water extends React.Component {
     // If plant was just watered, plant's details go in here:
     if (this.props.nickname) {
 
-        let daysLeftDisplay = this.props.daysLeft;
+        let daysLeftDisplay = parseInt(this.props.daysLeft);
 
         if (daysLeftDisplay === 1) {
             daysLeftDisplay = "tomorrow";

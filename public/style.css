@@ -364,4 +364,9 @@ nav {
 	border-radius: 0;
 	}
 
+	.landing-text {
+		font-size: 30px;
+		padding: 100px 45px;
+	}
+
 }

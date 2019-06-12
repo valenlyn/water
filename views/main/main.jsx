@@ -12,7 +12,7 @@ class SignUp extends React.Component {
             <div class="landing-text">Water your plants <br/>at the right time</div>
                 <div class="row d-flex justify-content-center">
 
-                    <div class="col-lg-4 col-sm-9 col-md-6">
+                    <div class="col-lg-4 col-sm-9 col-md-6 col-xs-9 m-4">
 
 
                         <div class="sign-up">
