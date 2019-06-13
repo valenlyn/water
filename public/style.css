@@ -261,7 +261,7 @@ h4 {
 
 nav {
 	background-color: #d15492;
-	padding: 15px;
+	padding: 18px;
 	font-family: 'Prata', serif;
 	font-size: 22px;
 	display: flex;
@@ -269,13 +269,12 @@ nav {
 }
 
 .nav-link, .nav-link-last {
-	padding: 10px 15px;
+	padding: 10px 12px;
 	color: black;
 }
 
 .nav-link-last {
-	position: absolute;
-	right: 0;
+	margin-left: auto;
 }
 
 .nav-link-last:hover {
@@ -304,8 +303,8 @@ nav {
 	.date {
 	font-family: 'Prata', serif;
 	text-align: center;
-	font-size: 50px;
-	margin-top: 10px;
+	font-size: 40px;
+	margin-top: 0px;
 	}
 
 	.box {
@@ -356,12 +355,13 @@ nav {
 	nav {
 	display: flex;
 	flex-direction: row;
-	padding: 20px;
+	padding: 10px;
 	margin-bottom: 3px;
 	width: 100%;
 	position: static;
 	font-family: 'Prata', serif;
 	border-radius: 0;
+	font-size: 16px;
 	}
 
 	.landing-text {
